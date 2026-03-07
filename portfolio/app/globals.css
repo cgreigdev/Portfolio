@@ -5,45 +5,82 @@
   --foreground: #171717;
 
   /* Theme Colors */
-  --color-bg-primary: #ebe1d5;
+  --color-bg-primary: #FAF8F4;
   --color-bg-secondary: rgba(255,255,255,0.015);
-  --color-bg-overlay: rgba(231, 215, 181, 0.92);
+  --color-bg-overlay: rgba(255, 247, 229, 0.92);
   --color-bg-hover: rgba(199, 91, 42, 0.04);
 
   /* Accent Colors */
   --color-accent-primary: #C75B2A;
-  --color-accent-secondary: #ffc400;
-  --color-accent-status: #ffd166;
+  --color-accent-secondary: #6B7D5F;
+  --color-accent-status: #7A8C6E;
 
   /* Text Colors */
-  --color-text-primary: #ffffff;
-  --color-text-secondary: rgba(255,255,255,0.55);
-  --color-text-muted: rgba(255,255,255,0.45);
-  --color-text-subtle: rgba(255,255,255,0.4);
-  --color-text-faint: rgba(255,255,255,0.35);
-  --color-text-extra-faint: rgba(255,255,255,0.3);
-  --color-text-minimal: rgba(255,255,255,0.25);
-  --color-text-tiny: rgba(255,255,255,0.2);
+  --color-text-primary: #000000;
+  --color-text-secondary: rgb(48, 48, 48);
+  --color-text-muted: rgb(41, 41, 41);
+  --color-text-subtle: rgba(44, 44, 44, 0.4);
+  --color-text-faint: rgb(39, 39, 39);
+  --color-text-extra-faint: rgb(61, 61, 61);
+  --color-text-minimal: rgb(59, 59, 59);
+  --color-text-tiny: rgb(49, 49, 49);
 
   /* Border Colors */
   --color-border-primary: rgba(255,255,255,0.06);
   --color-border-secondary: rgba(255,255,255,0.05);
   --color-border-tertiary: rgba(255,255,255,0.12);
-  --color-border-accent: rgba(199, 91, 42, 0.3);
-  --color-border-accent-hover: rgba(199, 91, 42, 0.4);
-  --color-border-accent-active: rgba(199, 91, 42, 0.5);
+  --color-border-accent: #6b2c1c;
+  --color-border-accent-hover: #A0422A;
+  --color-border-accent-active: #8B3A1F;
 
   /* Grid and Effects */
-  --color-grid: rgba(199, 91, 42, 0.035);
+  --color-grid: rgba(107, 125, 95, 0.18);
   --color-glow: rgba(199, 91, 42, 0.07);
-  --color-scrollbar: rgba(199, 91, 42, 0.2);
-}
+  --color-scrollbar: rgba(219, 166, 141, 0.068);
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Typography */
+  --font-family-mono: 'Roboto Mono', monospace;
+  --font-family-display: 'Poppins', sans-serif;
+  --font-family-body: 'Roboto', sans-serif;
+
+  /* Font Sizes */
+  --font-size-xs: 0.6rem;
+  --font-size-sm: 0.65rem;
+  --font-size-base: 0.7rem;
+  --font-size-lg: 0.72rem;
+  --font-size-xl: 0.75rem;
+  --font-size-2xl: 0.8rem;
+  --font-size-3xl: 0.88rem;
+  --font-size-4xl: 0.9rem;
+  --font-size-5xl: 1.05rem;
+  --font-size-6xl: 1.15rem;
+  --font-size-7xl: 1.2rem;
+  --font-size-8xl: 2.2rem;
+  --font-size-hero-name: clamp(3rem, 8vw, 7rem);
+  --font-size-hero-title: clamp(1.5rem, 4vw, 3.2rem);
+  --font-size-section-heading: clamp(2rem, 5vw, 3.5rem);
+
+  /* Font Weights */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 600;
+  --font-weight-bold: 700;
+  --font-weight-black: 800;
+
+  /* Letter Spacing */
+  --letter-spacing-tight: -0.03em;
+  --letter-spacing-normal: -0.02em;
+  --letter-spacing-wide: 0.08em;
+  --letter-spacing-wider: 0.1em;
+  --letter-spacing-widest: 0.12em;
+  --letter-spacing-ultra-wide: 0.15em;
+  --letter-spacing-max: 0.2em;
+
+  /* Line Heights */
+  --line-height-none: 1.0;
+  --line-height-tight: 1.7;
+  --line-height-normal: 1.75;
+  --line-height-relaxed: 1.85;
 }
 
 @media (prefers-color-scheme: dark) {
