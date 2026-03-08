@@ -13,6 +13,7 @@ const CONTENT = {
   tagline: ["Hi, I’m Callum. I enjoy designing innovative engineering solutions that turn complex problems into practical systems — spanning embedded systems, manufacturing, automation, and custom-built hardware and software.",
     " I’m driven by curiosity and a love of tinkering, with a focus on solutions that combine good engineering, thoughtful design, and long-term sustainability.",
   ],
+  contactme: "Feel free to get in touch with me at callumgreig20@gmail.com",
   sections: {
     projects: {
       title: "Projects",
@@ -46,7 +47,7 @@ const PROJECTS = [
   {
     id: 1,
     title: "Auto Tool Changing CNC Macine",
-    tags: ["Embedded Systems", "PCB Design", "Javascript", "G-Code", "DFMA", "Project Management"],
+    tags: ["Embedded Systems", "PCB Design", "G-Code", "DFMA"],
     year: "2024-2026",
     desc: "Designed and implemented a CNC control architecture integrating motion drives, power systems, sensors, machine I/O, tooling automation, integrated safety systems, and operational manuals/SOP. Increased manufacturing efficiency by 200% and reduced manual intervention by 80%.",
     status: "Complete",
@@ -54,7 +55,7 @@ const PROJECTS = [
   {
     id: 2,
     title: "Flexural Material Testing Machine",
-    tags: ["Embedded Systems", "Python", "Control Systems", "Data Analysis", "Project Management", "Composite Material Testing"],
+    tags: ["Embedded Systems", "Python", "Data Analysis", "Composite Material Testing"],
     year: "2023-2024",
     desc: "Designed a semi-automated three-point flexural testing machine with embedded control, load cell and displacement instrumentation, signal conditioning, and stress–strain analysis for composites to ASTM D790. Enabled precise material characterisation with 0.5% accuracy, reducing testing time by 60% and increasing data reliability.",
     status: "Complete",
@@ -62,7 +63,7 @@ const PROJECTS = [
   {
     id: 3,
     title: "Full Year Project – Non Destructive Testing of Composite Structures",
-    tags: ["Phased-Aray Ultrasonic NDT", "MATLAB", "Composite Material Analysis", "Airframe Structural Testing", "Data Analysis"],
+    tags: ["Phased-Aray Ultrasonic NDT", "Composite Material Analysis", "Airframe Structural Testing", "Data Analysis"],
     year: "2023",
     desc: "NDT analysis of MKII-A Composite Airframe, evaluate validity of NDT methods for detecting CFRP long-term performance, airframe load testing, and evaluate real-time diagnosis methods of airframe structural health.",
     status: "Complete",
@@ -70,7 +71,7 @@ const PROJECTS = [
   {
     id: 4,
     title: "Hazardous Chemical Storage Temperature Monitoring System",
-    tags: ["Embedded Electronics", "Time-series Data Systems", "Networking and IoT", "Systems Engineering", "C/C++", "Python", "SQL", "Bash/Shell"],
+    tags: ["Embedded Electronics", "Time-series Data Systems", "Networking and IoT", "Systems Engineering"],
     year: "2024",
     desc: "Designed and deployed an ESP32-based temperature monitoring system for hazardous chemical storage, integrating IoT telemetry with time-series data logging. The solution provides continuous 24/7 monitoring for notification of temperature deviations/warnings.",
     status: "Complete",
@@ -78,7 +79,7 @@ const PROJECTS = [
   {
     id: 5,
     title: "Manufacturing Data & Product Database System",
-    tags: ["Database Design", "SQL", "Python", "Manufacturing Systems", "Process Optimisation", "Data Analysis", "Engineering Automation"],
+    tags: ["Database Design", "Process Optimisation", "Data Analysis", "Automation"],
     year: "2024",
     desc: "Developed an internal SQL-based database for pultruded composite products integrating production setup sheets, troubleshooting records, and engineering data. Implemented tools for manufacturing issue tracking, resin composition management, and pricing calculators. Improving process optimisation and project costing.",
     status: "Ongoing",
@@ -89,7 +90,7 @@ const PERSONAL_PROJECTS = [
   {
     id: 1,
     title: "3D Printed TPU Discs – Aerodynamic Design Iteration",
-    tags: ["3D Printing", "Rapid Prototyping", "Aerodynamics", "Iterative Design", "CAD Modelling", "Material Testing", "TPU"],
+    tags: ["3D Printing", "Aerodynamics", "Iterative Design", "CAD Modelling"],
     year: "2023",
     desc: "Designed and 3D printed flexible TPU discs, applying iterative CAD modelling and aerodynamic analysis to optimise flight performance. Prototypes were tested and refined through successive design cycles, improving stability, distance, and flight consistency while exploring material behaviour under dynamic conditions.",
     status: "Complete",
@@ -97,7 +98,7 @@ const PERSONAL_PROJECTS = [
   {
     id: 2,
     title: "Homelab Infrastructure & Systems Experimentation",
-    tags: ["Homelab", "Linux Systems", "Virtualisation", "Networking", "Docker", "Automation", "Infrastructure Management"],
+    tags: ["Virtualisation", "Networking", "Automation", "Infrastructure Management"],
     year: "2024–2026",
     desc: "Built and maintained a personal homelab environment for systems learning, software experimentation, and infrastructure testing. The setup includes virtualisation platforms, containerised services, and networked applications used to explore server management, deployment workflows, and system reliability concepts. Focus was placed on practical engineering learning, platform stability, and experimenting with modern infrastructure tooling.",
     status: "Ongoing",
@@ -105,7 +106,7 @@ const PERSONAL_PROJECTS = [
   {
     id: 3,
     title: "Multi-Protocol Embedded Universal Control Device",
-    tags: ["Embedded Systems", "Firmware Architecture", "Low-Power Design", "Wireless Communication", "NFC", "Bluetooth", "WiFi", "RF Signal Processing", "Sensor Integration", "C/C++"],
+    tags: ["Embedded Systems", "Wireless Communication", "Sensor Integration", "C/C++"],
     year: "2025-2026",
     desc: "Developed a handheld embedded device platform supporting multiple communication and sensing technologies including infrared, radio frequency, NFC, Bluetooth, and WiFi experimentation. The project also explored low-power firmware architecture, signal acquisition and reproduction workflows, and integration of time-of-flight and motion sensing components for physical measurement and interaction research. Emphasis was placed on modular firmware design, energy efficiency, and hardware interface prototyping.",
     status: "Ongoing",
@@ -113,7 +114,7 @@ const PERSONAL_PROJECTS = [
   {
     id: 4,
     title: "Creative Worldbuilding, Campaign Systems, and Knowledge Database Design",
-    tags: ["Systems Design", "Worldbuilding", "Knowledge Management", "Digital Organisation", "Map Design", "Creative Engineering"],
+    tags: ["Systems Design", "Worldbuilding", "Map Design", "Creative Engineering"],
     year: "2026",
     desc: "Developed an integrated creative design environment supporting tabletop campaign development for a Dungeons & Dragons role-playing framework. The project combines structured narrative worldbuilding, custom environmental map design, and automated note organisation using an Obsidian-based knowledge database system. The vault functions as a decision support and planning assistant for campaign development, enabling hierarchical story tracking, character and event relationships, and design iteration. The work demonstrates application of systems thinking to creative domain modelling.",
     status: "Ongoing",
@@ -121,7 +122,7 @@ const PERSONAL_PROJECTS = [
   {
     id: 5,
     title: "Gravity Fed Hydroponic Cultivation System Design",
-    tags: ["CAD Design", "3D Printing", "Agricultural Engineering", "Environmental Measurement", "Prototyping", "Sustainable Systems"],
+    tags: ["CAD Design", "3D Printing", "Environmental Measurement", "Sustainable Systems"],
     year: "2023",
     desc: "Designed and prototyped a gravity-fed hydroponic growing system for chilli pepper cultivation, incorporating 3D printed self-wicking internal cores to regulate nutrient distribution. The project involved iterative CAD modelling, physical prototyping, and testing of nutrient solution properties including electrical conductivity and pH balance to optimise plant health and growth conditions. Focus was placed on reliable passive water delivery, structural manufacturability, and sustainable cultivation principles.",
     status: "Complete",
@@ -211,14 +212,14 @@ const CV_ITEMS = [
     title: "Homelab & Infrastructure",
   },
   {
-  type: "Hobbies",
-  title: "Disc Golf",
+    type: "Hobbies",
+    title: "Disc Golf",
   },
-    {
+  {
     type: "Hobbies",
     title: "Astronomy",
   },
-    {
+  {
     type: "Hobbies",
     title: "Gardening",
   },
@@ -516,6 +517,21 @@ function Hero({ onNav, onDownloadCV }: { onNav: (section: string) => void; onDow
               Download CV
             </button>
           </div>
+
+          <p style={{
+            fontFamily: "var(--font-family-body)",
+            fontSize: "clamp(0.9rem, 2.5vw, 1.05rem)",
+            color: "var(--color-text-muted)",
+            padding: "2rem",
+            maxWidth: "800px",
+            lineHeight: 1.75,
+            marginBottom: "2rem",
+            textAlign: "center",
+            marginLeft: "auto",
+            marginRight: "auto",
+          }}>
+            {CONTENT.contactme}
+          </p>
         </div>
       </section>
     </>
@@ -603,7 +619,7 @@ function Projects() {
                   }}>{p.title}</h3>
                   <p style={{ fontFamily: "var(--font-family-body)", fontSize: "clamp(0.8rem, 2vw, 0.88rem)", color: "var(--color-text-secondary)", lineHeight: 1.7, margin: "0 0 1.5rem 0" }}>{p.desc}</p>
                 </div>
-                <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
+                <div style={{ display: "grid", gap: "0.3rem", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))"}}>
                   {p.tags.map(t => (
                     <span key={t} style={{
                       fontFamily: "var(--font-family-mono)",
@@ -665,12 +681,12 @@ function CV({ onDownloadCV }: { onDownloadCV: () => void }) {
           {CV_ITEMS.filter(item => item.type === activeType).map((item, i) => (
             <FadeIn variant="slide-left" key={i} delay={i * 0.08}>
               <div style={{
-                padding: "2rem 0",
+                padding: "1rem 0",
                 borderBottom: "1px solid var(--color-border-secondary)",
                 display: "grid",
-                gridTemplateColumns: "1fr 2fr 1fr",
+                gridTemplateColumns: activeType === "Hobbies" ? "1fr" : "1fr 2fr 1fr",
                 gap: "1rem",
-                alignItems: "start",
+                alignItems:  activeType === "Hobbies" ? "anchor-centre" : "start",
               }}>
                 <div>
                   <div style={{ fontFamily: "'Poppins', sans-serif", fontSize: "clamp(0.9rem, 2vw, 1rem)", fontWeight: 700, color: "var(--color-text-primary)", marginBottom: "0.3rem" }}>{item.title}</div>
