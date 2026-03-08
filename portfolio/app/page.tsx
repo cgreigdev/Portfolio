@@ -15,12 +15,10 @@ const CONTENT = {
   ],
   sections: {
     projects: {
-      label: "01 — PROJECTS",
-      title: "Main Projects",
+      title: "Projects",
     },
     cv: {
-      label: "02 — CV",
-      title: "Experience & Skills",
+      title: "Background",
       ctaButton: "Download CV",
     },
   },
@@ -41,7 +39,7 @@ const CONTENT = {
 const items = [
   { label: "Home", href: "#home" },
   { label: "Projects", href: "#projects" },
-  { label: "CV", href: "#cv" },
+  { label: "About", href: "#cv" },
 ];
 
 const PROJECTS = [
@@ -63,7 +61,7 @@ const PROJECTS = [
   },
   {
     id: 3,
-    title: "Full Year Project – Non-Destructive Testing (NDT) of Composite Structures",
+    title: "Full Year Project – Non Destructive Testing of Composite Structures",
     tags: ["Phased-Aray Ultrasonic NDT", "MATLAB", "Composite Material Analysis", "Airframe Structural Testing", "Data Analysis"],
     year: "2023",
     desc: "NDT analysis of MKII-A Composite Airframe, evaluate validity of NDT methods for detecting CFRP long-term performance, airframe load testing, and evaluate real-time diagnosis methods of airframe structural health.",
@@ -74,7 +72,7 @@ const PROJECTS = [
     title: "Hazardous Chemical Storage Temperature Monitoring System",
     tags: ["Embedded Electronics", "Time-series Data Systems", "Networking and IoT", "Systems Engineering", "C/C++", "Python", "SQL", "Bash/Shell"],
     year: "2024",
-    desc: "Designed and deployed an ESP32-based temperature monitoring system for hazardous chemical storage, integrating IoT telemetry with time-series data logging. The solution provides continuous 24/7 monitoring, automated historical records, and early warning of temperature deviations, improving monitoring reliability and supporting safer storage of temperature-sensitive hazardous substances.",
+    desc: "Designed and deployed an ESP32-based temperature monitoring system for hazardous chemical storage, integrating IoT telemetry with time-series data logging. The solution provides continuous 24/7 monitoring for notification of temperature deviations/warnings.",
     status: "Complete",
   },
   {
@@ -82,15 +80,7 @@ const PROJECTS = [
     title: "Manufacturing Data & Product Database System",
     tags: ["Database Design", "SQL", "Python", "Manufacturing Systems", "Process Optimisation", "Data Analysis", "Engineering Automation"],
     year: "2024",
-    desc: "Developed an internal SQL-based database for pultruded composite products integrating production setup sheets, troubleshooting records, and engineering data. Implemented tools for manufacturing issue tracking, resin formulation management, and pricing calculators for structural assemblies, enabling improved process optimisation and more accurate project costing.",
-    status: "Ongoing",
-  },
-  {
-    id: 6,
-    title: "Parametric Surface Modelling for Manufacturing Tooling",
-    tags: ["Parametric CAD", "Surface Modelling", "Manufacturing Engineering", "Process Optimisation", "Fusion 360", "3D Printing", "Rapid Prototyping"],
-    year: "2025",
-    desc: "Developed parametric surface models for specialised tooling used in continuous composite manufacturing. Rapid prototypes were produced using 3D printing with engineering filaments to validate forming behaviour and enable fast design iteration in volatile chemical environments. The resulting tooling designs reduced forming-related machine downtime and improved manufacturing stability.",
+    desc: "Developed an internal SQL-based database for pultruded composite products integrating production setup sheets, troubleshooting records, and engineering data. Implemented tools for manufacturing issue tracking, resin composition management, and pricing calculators. Improving process optimisation and project costing.",
     status: "Ongoing",
   },
 ];
@@ -136,14 +126,6 @@ const PERSONAL_PROJECTS = [
     desc: "Designed and prototyped a gravity-fed hydroponic growing system for chilli pepper cultivation, incorporating 3D printed self-wicking internal cores to regulate nutrient distribution. The project involved iterative CAD modelling, physical prototyping, and testing of nutrient solution properties including electrical conductivity and pH balance to optimise plant health and growth conditions. Focus was placed on reliable passive water delivery, structural manufacturability, and sustainable cultivation principles.",
     status: "Complete",
   }, 
-  {
-    id: 6,
-    title: "Custom PC System Designs and Assembly",
-    tags: ["Hardware Engineering", "System Integration", "Thermal Management", "Component Optimisation"],
-    year: "2020–2026",
-    desc: "Designed and assembled custom personal computing systems with focus on component compatibility, thermal performance, and workload optimisation. The work involved selecting hardware configurations based on intended computational and operational requirements while ensuring system stability and efficiency.",
-    status: "Ongoing",
-  }
 ];
 
 const CV_ITEMS = [
@@ -321,10 +303,10 @@ function Nav({ active, onNav, scrollRef }: { active: string; onNav: (section: st
     }}>
       <span style={{
         fontFamily: "var(--font-family-mono)",
-        fontSize: "clamp(0.7rem, 2vw, 0.8rem)",
+        fontSize: "clamp(0.9rem, 2.5vw, 1.05rem)",
         letterSpacing: "0.15em",
         color: "var(--color-text-primary)",
-        opacity: 0.9,
+        opacity: 1,
       }}>
         C<span style={{ color: "var(--color-accent-primary)" }}>.</span>Greig
       </span>
@@ -548,8 +530,8 @@ function Projects() {
   const currentProjects = activeTab === "Professional" ? PROJECTS : PERSONAL_PROJECTS;
 
   return (
-    <section id="projects" style={{ padding: "5rem 1rem", background: "var(--color-bg-secondary)", borderTop: "1px solid var(--color-border-secondary)", borderBottom: "1px solid var(--color-border-secondary)" }}>
-      <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "0 1rem" }}>
+    <section id="projects" style={{ padding: "5rem 1rem", background: "var(--color-bg-primary)", borderTop: "1px solid var(--color-border-secondary)", borderBottom: "1px solid var(--color-border-secondary)" }}>
+      <div style={{ maxWidth: "1600px", margin: "0 auto", padding: "0 1rem" }}>
         <FadeIn variant="slide-left">
           <h2 style={{ fontFamily: "var(--font-family-display)", fontSize: "var(--font-size-section-heading)", fontWeight: 800, color: "var(--color-text-primary)", margin: "0 0 3.5rem 0", letterSpacing: "-0.03em", textAlign: "center" }}>
             {CONTENT.sections.projects.title}
@@ -578,7 +560,7 @@ function Projects() {
           ))}
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: "1.5px", background: "var(--color-border-primary)" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: "5px", background: "var(--color-bg-primary)"}}>
           {currentProjects.map((p, i) => (
             <FadeIn variant="slide-left" delay={i * 0.025} key={p.id}>
               <div
@@ -586,11 +568,12 @@ function Projects() {
                 onMouseLeave={() => setHovered(null)}
                 style={{
                   background: hovered === p.id ? "var(--color-bg-hover)" : "var(--color-bg-primary)",
+                  borderRadius: "10px",
                   padding: "2.2rem",
                   cursor: "pointer",
                   transition: "background 0.25s",
                   position: "relative",
-                  minHeight: "220px",
+                  minHeight: "600px",
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "space-between",
@@ -603,7 +586,8 @@ function Projects() {
                       fontFamily: "var(--font-family-mono)", fontSize: "0.6rem",
                       letterSpacing: "0.1em",
                       color: p.status === "In Progress" ? "var(--color-accent-status)" : "var(--color-accent-primary)",
-                      border: `1px solid ${p.status === "In Progress" ? "rgba(255,209,102,0.3)" : "var(--color-border-accent)"}`,
+                      border: `1px solid ${p.status === "In Progress" ? "var(--color-accent-status)" : "var(--color-accent-primary)" }`,
+                      borderRadius: "10px",
                       padding: "0.2rem 0.6rem",
                       textTransform: "uppercase",
                     }}>{p.status}</span>
@@ -611,13 +595,13 @@ function Projects() {
                   <h3 style={{
                     fontFamily: "var(--font-family-display)",
                     fontSize: "clamp(1rem, 2.5vw, 1.15rem)",
-                    fontWeight: 700,
-                    color: hovered === p.id ? "var(--color-accent-primary)" : "var(--color-text-primary)",
+                    fontWeight: 600,
+                    color: hovered === p.id ? "var(--color-accent-secondary)" : "var(--color-text-primary)",
                     margin: "0 0 0.75rem 0",
                     transition: "color 0.25s",
                     letterSpacing: "-0.02em",
                   }}>{p.title}</h3>
-                  <p style={{ fontFamily: "var(--font-family-body)", fontSize: "clamp(0.8rem, 2vw, 0.88rem)", color: "var(--color-text-subtle)", lineHeight: 1.7, margin: "0 0 1.5rem 0" }}>{p.desc}</p>
+                  <p style={{ fontFamily: "var(--font-family-body)", fontSize: "clamp(0.8rem, 2vw, 0.88rem)", color: "var(--color-text-secondary)", lineHeight: 1.7, margin: "0 0 1.5rem 0" }}>{p.desc}</p>
                 </div>
                 <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
                   {p.tags.map(t => (
@@ -627,6 +611,7 @@ function Projects() {
                       letterSpacing: "0.08em",
                       color: "var(--color-accent-primary)",
                       background: "rgba(199, 91, 42, 0.06)",
+                      borderRadius: "10px",
                       padding: "0.25rem 0.65rem",
                       textTransform: "uppercase",
                     }}>{t}</span>
