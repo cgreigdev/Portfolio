@@ -2,45 +2,26 @@
 import { useState, useEffect, useRef } from "react";
 import GooeyNav from "@/components/GooeyNav";
 import GradualBlur from "@/components/GradualBlur";
+import DecryptedText from "@/components/DecryptedText";
+import HeptaGrid from "@/components/HeptaGrid";
 // ============================================================
 //  EDIT ALL YOUR CONTENT HERE
 // ============================================================
 const CONTENT = {
   name: "Callum Greig",
   role: "Mechatronics Engineer",
-  tagline: ["Hi, I’m Callum. I enjoy designing innovative engineering solutions that turn complex problems into practical systems — spanning structural design, manufacturing, automation, and custom-built hardware and software.",
+  tagline: ["Hi, I’m Callum. I enjoy designing innovative engineering solutions that turn complex problems into practical systems — spanning embedded systems, manufacturing, automation, and custom-built hardware and software.",
     " I’m driven by curiosity and a love of tinkering, with a focus on solutions that combine good engineering, thoughtful design, and long-term sustainability.",
   ],
-    about: [
-    "I'm a mechatronics engineer who loves building things that move, sense, and think. My work sits at the crossroads of mechanical design, electronics, and intelligent control — from robotic arms to battery management systems.",
-    "I'm drawn to problems where hardware and software are equally hard — where getting the algorithm right matters just as much as getting the circuit right.",
-  ],
-  skills: [
-    { label: "Dev Ops", pct: 60 },
-    { label: "Embedded Systems", pct: 70 },
-    { label: "Automation Design", pct: 80 },
-    { label: "PCB Design", pct: 50 },
-    { label: "Project Management", pct: 50 },
-    { label: "CAD Modelling", pct: 90 },
-    { label: "Sales Engineering", pct: 60 },
-    { label: "Systems Engineering", pct: 60 },
-    { label: "FEA, CFD, and thermal analysis", pct: 60 },
-    { label: "Composite Material Analysis", pct: 80 },
-  ],
   sections: {
-    about: {
-      label: "01 — ABOUT",
-      title: "About Me",
-    },
     projects: {
-      label: "02 — PROJECTS",
+      label: "01 — PROJECTS",
       title: "Main Projects",
     },
     cv: {
-      label: "03 — CV",
+      label: "02 — CV",
       title: "Experience & Skills",
-      cta: "Want the full picture?",
-      ctaButton: "Download CV ↓",
+      ctaButton: "Download CV",
     },
   },
   footer: {
@@ -59,7 +40,6 @@ const CONTENT = {
 // update with your own items
 const items = [
   { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
   { label: "Projects", href: "#projects" },
   { label: "CV", href: "#cv" },
 ];
@@ -236,6 +216,30 @@ const CV_ITEMS = [
     period: "",
     detail: "Pricing & Structural Calculators · Quoting · Project Management · Financial Planning",
   },
+  {
+    type: "Hobbies",
+    title: "3D Printing & Prototyping",
+  },
+  {
+    type: "Hobbies",
+    title: "Tabletop Gaming & Worldbuilding",
+  },
+  {
+    type: "Hobbies",
+    title: "Homelab & Infrastructure",
+  },
+  {
+  type: "Hobbies",
+  title: "Disc Golf",
+  },
+    {
+    type: "Hobbies",
+    title: "Astronomy",
+  },
+    {
+    type: "Hobbies",
+    title: "Gardening",
+  },
 ];
 
 function useInView(threshold = 0.15): [React.RefObject<HTMLDivElement | null>, boolean] {
@@ -252,16 +256,40 @@ function useInView(threshold = 0.15): [React.RefObject<HTMLDivElement | null>, b
   return [ref, inView];
 }
 
-function FadeIn({ children, delay = 0.5, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) {
+function FadeIn({ 
+  children, 
+  delay = 0.1, 
+  className = "", 
+  variant = "fade-up" 
+}: { 
+  children: React.ReactNode; 
+  delay?: number; 
+  className?: string;
+  variant?: "fade-up" | "slide-left" | "fade"
+}) {
   const [ref, inView] = useInView();
+
+  const animations = {
+    "fade-up": {
+      opacity: inView ? 1 : 0,
+      transform: inView ? "translateY(0)" : "translateY(28px)",
+      filter: inView ? "blur(0px)" : "blur(4px)",
+      transition: `opacity 0.5s ease ${delay}s, transform 0.5s ease ${delay}s, filter 0.5s ease ${delay}s`,
+    },
+    "slide-left": {
+      opacity: inView ? 1 : 0,
+      transform: inView ? "translateX(0)" : "translateX(-40px)",
+      filter: inView ? "blur(0px)" : "blur(3px)",
+      transition: `opacity 0.5s ease ${delay}s, transform 0.5s ease ${delay}s, filter 0.5s ease ${delay}s`,
+    },
+    "fade": {
+      opacity: inView ? 1 : 0,
+      transition: `opacity 0.5s ease ${delay}s`,
+    },
+  };
+
   return (
-    <div
-      ref={ref}
-      className={className}
-      style={{
-        transition: `transform 0.7s ease ${delay}s`,
-      }}
-    >
+    <div ref={ref} className={className} style={animations[variant]}>
       {children}
     </div>
   );
@@ -283,7 +311,7 @@ function Nav({ active, onNav, scrollRef }: { active: string; onNav: (section: st
   return (
     <nav style={{
       position: "fixed", top: 0, left: 0, right: 0, zIndex: 100,
-      padding: "0 2.5rem",
+      padding: "0 clamp(1rem, 5vw, 2.5rem)",
       height: "64px",
       display: "flex", alignItems: "center", justifyContent: "space-between",
       background: scrolled ? "var(--color-bg-overlay)" : "var(--color-bg-primary)",
@@ -293,7 +321,7 @@ function Nav({ active, onNav, scrollRef }: { active: string; onNav: (section: st
     }}>
       <span style={{
         fontFamily: "var(--font-family-mono)",
-        fontSize: "0.8rem",
+        fontSize: "clamp(0.7rem, 2vw, 0.8rem)",
         letterSpacing: "0.15em",
         color: "var(--color-text-primary)",
         opacity: 0.9,
@@ -330,255 +358,229 @@ function Hero({ onNav, onDownloadCV }: { onNav: (section: string) => void; onDow
   }, []);
 
   return (
-    <section id="home" style={{
-      minHeight: "100vh",
-      display: "flex", flexDirection: "column", justifyContent: "center",
-      padding: "0 2.5rem",
-      position: "relative",
-      overflow: "hidden",
-    }}>
-      {/* grid bg */}
-      <div style={{
-        position: "absolute", inset: 0,
-        backgroundImage: `
-          linear-gradient(var(--color-grid) 1px, transparent 1px),
-          linear-gradient(90deg, var(--color-grid) 1px, transparent 1px)
-        `,
-        backgroundSize: "60px 60px",
-        pointerEvents: "none",
+    <>
+      <style dangerouslySetInnerHTML={{
+        __html: `
+          @media (min-width: 768px) {
+            .hero-profile-image {
+              display: block !important;
+            }
+          }
+        `
       }} />
-      {/* glow */}
-      <div style={{
-        position: "absolute", top: "20%", left: "60%",
-        width: "480px", height: "480px",
-        borderRadius: "50%",
-        background: "radial-gradient(circle, var(--color-glow) 0%, transparent 70%)",
-        pointerEvents: "none",
-      }} />
+      <section id="home" style={{
+        minHeight: "100vh",
+        display: "flex", flexDirection: "column", justifyContent: "center",
+        padding: "0 1rem",
+        position: "relative",
+        overflow: "hidden",
+      }}>
+        {/* grid bg */}
+        <div style={{ position: "absolute", inset: 0 }}>
+          <HeptaGrid
+            speed={0.13}
+            squareSize={60}
+            gap={5}
+            borderRadius={8}
+            direction="up"
+            backgroundColor="transparent"
+            borderColor= "#6b7d5f3a"
+            hoverFillColor="#6b7d5f17"
+            enableHover={true}
+          />
+        </div>
+        {/* glow */}
+        <div style={{
+          position: "absolute", 
+          top: "20%", 
+          left: "50%",
+          transform: "translateX(-50%)",
+          width: "min(480px, 80vw)", 
+          height: "min(480px, 80vw)",
+          borderRadius: "50%",
+          background: "radial-gradient(circle, var(--color-glow) 0%, transparent 70%)",
+          pointerEvents: "none",
+        }} />
 
-      <div style={{ maxWidth: "1200px", position: "relative" }}>
-        <div style={{ position: "relative" }}>
-          <div style={{
-            width: "280px",
-            height: "280px",
-            borderRadius: "50%",
-            overflow: "hidden",
-            border: "3px solid var(--color-accent-primary)",
-            boxShadow: "0 0 40px rgba(255, 208, 0, 0.2)",
-            position: "absolute",
-            top: 0,
-            right: "-340px",
+        <div style={{ 
+          maxWidth: "1200px", 
+          margin: "0 auto",
+          padding: "0 1.5rem",
+          position: "relative",
+          width: "100%",
+          pointerEvents: "none",
+        }}>
+          <div style={{ 
+            position: "relative",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            textAlign: "center",
           }}>
-            <img
-              src="/profile.jpg"
-              alt="Callum Greig - Profile Photo"
+            {/* Profile image - hidden on mobile, shown on larger screens */}
+            <div className="hero-profile-image" style={{
+              width: "min(200px, 45vw)",
+              height: "min(200px, 45vw)",
+              borderRadius: "50%",
+              overflow: "hidden",
+              border: "3px solid var(--color-accent-primary)",
+              boxShadow: "0 0 40px #6b7d5f77",
+              marginBottom: "2rem",
+              display: "none", // Hidden by default
+            }}>
+              <img
+                src="/profile.jpg"
+                alt="Callum Greig - Profile Photo"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  display: "block",
+                }}
+              />
+            </div>
+
+            <DecryptedText
+              text={CONTENT.name}
               style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                display: "block",
+                fontFamily: "var(--font-family-mono)",
+                fontSize: "var(--font-size-hero-name)",
+                fontWeight: 800,
+                lineHeight: 1.0,
+                color: "var(--color-accent-primary)",
+                margin: "0 0 0.5rem 0",
+                letterSpacing: "-0.03em",
               }}
+              animateOn="view"
+              revealDirection ="start"
+              maxIterations={10}
+              sequential={true}
+
+              speed={100}
             />
           </div>
 
-          <h1 style={{
+          <div style={{
             fontFamily: "var(--font-family-mono)",
-            fontSize: "var(--font-size-hero-name)",
-            fontWeight: 800,
-            lineHeight: 1.0,
-            color: "var(--color-accent-primary)",
-            margin: "0 0 1rem 0",
-            letterSpacing: "-0.03em",
+            fontSize: "var(--font-size-hero-title)",
+            fontWeight: 300,
+            color: "var(--color-text-secondary)",
+            marginBottom: "2rem",
+            minHeight: "1.2em",
+            letterSpacing: "-0.02em",
+            textAlign: "center",
           }}>
-            {CONTENT.name}
-          </h1>
-        </div>
-
-        <div style={{
-          fontFamily: "var(--font-family-mono)",
-          fontSize: "var(--font-size-hero-title)",
-          fontWeight: 300,
-          color: "var(--color-text-secondary)",
-          marginBottom: "2.5rem",
-          minHeight: "1.2em",
-          letterSpacing: "-0.02em",
-        }}>
-          {typed}<span style={{ color: "var(--color-accent-primary)", animation: "blink 1s step-end infinite" }}>_</span>
-        </div>
-
-        <p style={{
-          fontFamily: "var(--font-family-body)",
-          fontSize: "1.05rem",
-          color: "var(--color-text-muted)",
-          maxWidth: "800px",
-          lineHeight: 1.75,
-          marginBottom: "3rem",
-        }}>
-          {CONTENT.tagline.map((line, i) => (
-            <span key={i}>{line}</span>
-          ))}
-        </p>
-
-        <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-          <button
-            onClick={() => onNav("projects")}
-            style={{
-              background: "var(--color-accent-primary)", color: "white",
-              border: "1px solid var(--color-accent-primary)",
-              padding: "0.85rem 2rem",
-              fontFamily: "var(--font-family-mono)",
-              fontSize: "0.75rem",
-              letterSpacing: "0.12em",
-              fontWeight: 600,
-              textTransform: "uppercase",
-              transition: "all 0.2s",
-            }}
-            onMouseEnter={e => { (e.target as HTMLButtonElement).style.background = "var(--color-accent-secondary)"; (e.target as HTMLButtonElement).style.borderColor = "var(--color-accent-secondary)"; }}
-            onMouseLeave={e => { (e.target as HTMLButtonElement).style.background = "var(--color-accent-primary)"; (e.target as HTMLButtonElement).style.borderColor = "var(--color-accent-primary)"; }}
-          >
-            View Projects
-          </button>
-          <button
-            onClick={onDownloadCV}
-            style={{
-              background: "var(--color-accent-primary)", color: "white",
-              border: "1px solid var(--color-accent-primary)",
-              cursor: "pointer",
-              padding: "0.85rem 2rem",
-              fontFamily: "var(--font-family-mono)",
-              fontSize: "0.75rem",
-              letterSpacing: "0.12em",
-              fontWeight: 600,
-              textTransform: "uppercase",
-              transition: "all 0.2s",
-            }}
-            onMouseEnter={e => { (e.target as HTMLButtonElement).style.background = "var(--color-accent-secondary)"; (e.target as HTMLButtonElement).style.borderColor = "var(--color-accent-secondary)"; }}
-            onMouseLeave={e => { (e.target as HTMLButtonElement).style.background = "var(--color-accent-primary)"; (e.target as HTMLButtonElement).style.borderColor = "var(--color-accent-primary)"; }}
-          >
-            Download CV
-          </button>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function About() {
-  return (
-    <section id="about" style={{ padding: "8rem 2.5rem", maxWidth: "1100px", margin: "0 auto" }}>
-      <FadeIn>
-        <div style={{ fontFamily: "var(--font-family-mono)", fontSize: "0.7rem", letterSpacing: "0.2em", color: "var(--color-accent-primary)", marginBottom: "1rem" }}>
-          {`// ${CONTENT.sections.about.label}`}
-        </div>
-        <h2 style={{ fontFamily: "var(--font-family-display)", fontSize: "var(--font-size-section-heading)", fontWeight: 800, color: "var(--color-text-primary)", margin: "0 0 3rem 0", letterSpacing: "-0.03em" }}>
-          {CONTENT.sections.about.title}
-        </h2>
-      </FadeIn>
-
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "5rem", alignItems: "start" }}>
-        <FadeIn delay={0.1}>
-          {CONTENT.about.map((paragraph, i) => (
-            <p key={i} style={{ fontFamily: "var(--font-family-body)", fontSize: "1.05rem", color: "var(--color-text-secondary)", lineHeight: 1.85, marginBottom: i === CONTENT.about.length - 1 ? "2rem" : "1.5rem" }}>
-              {paragraph}
-            </p>
-          ))}
-        </FadeIn>
-
-        <FadeIn delay={0.2}>
-          <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
-            {CONTENT.skills.map(({ label, pct }, i) => (
-              <div key={label}>
-                <span style={{ fontFamily: "var(--font-family-mono)", fontSize: "0.7rem", letterSpacing: "0.1em", color: "var(--color-text-extra-faint)", textTransform: "uppercase" }}>{label}</span>
-                <SkillDots pct={pct} delay={i * 0.08} />
-              </div>
-            ))}
+            {typed}<span style={{ color: "var(--color-accent-primary)", animation: "blink 1s step-end infinite" }}>_</span>
           </div>
-        </FadeIn>
-      </div>
-    </section>
-  );
-}
 
-function SkillDots({ pct, delay }: { pct: number; delay: number }) {
-  const [ref, inView] = useInView();
-  const filledDots = Math.round(pct / 10);
-  const totalDots = 10;
+          <p style={{
+            fontFamily: "var(--font-family-body)",
+            fontSize: "clamp(0.9rem, 2.5vw, 1.05rem)",
+            color: "var(--color-text-muted)",
+            maxWidth: "800px",
+            lineHeight: 1.75,
+            marginBottom: "2rem",
+            textAlign: "center",
+            marginLeft: "auto",
+            marginRight: "auto",
+          }}>
+            {CONTENT.tagline.map((line, i) => (
+              <span key={i}>{line}</span>
+            ))}
+          </p>
 
-  return (
-    <div ref={ref} style={{ display: "grid", gridTemplateColumns: "repeat(10, 1fr)", gap: "0.25rem", marginTop: "0.6rem", maxWidth: "100px" }}>
-      {Array.from({ length: totalDots }).map((_, i) => (
-        <div
-          key={i}
-          style={{
-            width: "100%",
-            aspectRatio: "1",
-            borderRadius: "50%",
-            background: i < filledDots ? "var(--color-accent-primary)" : "rgba(255,255,255,0.1)",
-            transition: `background 0.4s ease ${delay + (i * 0.05)}s`,
-            opacity: inView ? 1 : 0.3,
-          }}
-        />
-      ))}
-    </div>
-  );
-}
-
-function SkillBar({ pct, delay }: { pct: number; delay: number }) {
-  const [ref, inView] = useInView();
-  return (
-    <div ref={ref} style={{
-      height: "100%",
-      width: inView ? `${pct}%` : "0%",
-      background: "linear-gradient(90deg, var(--color-accent-primary), var(--color-accent-secondary))",
-      transition: `width 1s ease ${delay + 0.2}s`,
-      borderRadius: "2px",
-    }} />
+          <div style={{ 
+            display: "flex", 
+            gap: "1rem", 
+            flexWrap: "wrap",
+            justifyContent: "center",
+            pointerEvents: "auto",
+          }}>
+            <button
+              onClick={() => onNav("projects")}
+              style={{
+                background: "var(--color-accent-primary)", color: "white",
+                borderRadius: "10px",
+                padding: "0.65rem 1rem",
+                fontFamily: "var(--font-family-mono)",
+                fontSize: "clamp(0.7rem, 2vw, 0.75rem)",
+                letterSpacing: "0.12em",
+                fontWeight: 600,
+                textTransform: "uppercase",
+                transition: "all 0.2s",
+              }}
+              onMouseEnter={e => { (e.target as HTMLButtonElement).style.background = "var(--color-accent-secondary)";}}
+              onMouseLeave={e => { (e.target as HTMLButtonElement).style.background = "var(--color-accent-primary)";}}
+            >
+              View Projects
+            </button>
+            <button
+              onClick={onDownloadCV}
+              style={{
+                background: "var(--color-accent-primary)", color: "white",
+                borderRadius: "10px",
+                cursor: "pointer",
+                padding: "0.65rem 1rem",
+                fontFamily: "var(--font-family-mono)",
+                fontSize: "clamp(0.7rem, 2vw, 0.75rem)",
+                letterSpacing: "0.12em",
+                fontWeight: 600,
+                textTransform: "uppercase",
+                transition: "all 0.2s",
+              }}
+              onMouseEnter={e => { (e.target as HTMLButtonElement).style.background = "var(--color-accent-secondary)";}}
+              onMouseLeave={e => { (e.target as HTMLButtonElement).style.background = "var(--color-accent-primary)";}}
+            >
+              Download CV
+            </button>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
 
 function Projects() {
   const [hovered, setHovered] = useState<number | null>(null);
-  const [activeTab, setActiveTab] = useState("Work");
+  const [activeTab, setActiveTab] = useState("Professional");
 
-  const projectTabs = ["Work", "Personal"];
-  const currentProjects = activeTab === "Work" ? PROJECTS : PERSONAL_PROJECTS;
+  const projectTabs = ["Professional", "Personal"];
+  const currentProjects = activeTab === "Professional" ? PROJECTS : PERSONAL_PROJECTS;
 
   return (
-    <section id="projects" style={{ padding: "8rem 2.5rem", background: "var(--color-bg-secondary)", borderTop: "1px solid var(--color-border-secondary)", borderBottom: "1px solid var(--color-border-secondary)" }}>
-      <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
-        <FadeIn>
-          <div style={{ fontFamily: "var(--font-family-mono)", fontSize: "0.7rem", letterSpacing: "0.2em", color: "var(--color-accent-primary)", marginBottom: "1rem" }}>
-            {`// ${CONTENT.sections.projects.label}`}
-          </div>
-          <h2 style={{ fontFamily: "var(--font-family-display)", fontSize: "var(--font-size-section-heading)", fontWeight: 800, color: "var(--color-text-primary)", margin: "0 0 3.5rem 0", letterSpacing: "-0.03em" }}>
+    <section id="projects" style={{ padding: "5rem 1rem", background: "var(--color-bg-secondary)", borderTop: "1px solid var(--color-border-secondary)", borderBottom: "1px solid var(--color-border-secondary)" }}>
+      <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "0 1rem" }}>
+        <FadeIn variant="slide-left">
+          <h2 style={{ fontFamily: "var(--font-family-display)", fontSize: "var(--font-size-section-heading)", fontWeight: 800, color: "var(--color-text-primary)", margin: "0 0 3.5rem 0", letterSpacing: "-0.03em", textAlign: "center" }}>
             {CONTENT.sections.projects.title}
           </h2>
         </FadeIn>
 
-        <div style={{ display: "flex", gap: "0.75rem", marginBottom: "3rem", flexWrap: "wrap" }}>
+        <div style={{ display: "flex", gap: "0.75rem", marginBottom: "3rem", flexWrap: "wrap", justifyContent: "center" }}>
           {projectTabs.map(t => (
             <button key={t} onClick={() => setActiveTab(t)} style={{
               background: activeTab === t ? "var(--color-accent-primary)" : "transparent",
               color: activeTab === t ? "white" : "var(--color-text-muted)",
-              border: "1px solid rgba(99, 96, 96, 0.56)",
+              borderRadius: "10px",
+              border: `1px solid ${activeTab === t ? "var(--color--accent--primary)" : "rgba(99, 96, 96, 0.22)"}`,
               cursor: "pointer",
-              padding: "0.6rem 1.5rem",
+              padding: "0.65rem 1rem",
               fontFamily: "var(--font-family-mono)",
-              fontSize: "0.7rem",
+              fontSize: "clamp(0.65rem, 1.5vw, 0.7rem)",
               letterSpacing: "0.12em",
               textTransform: "uppercase",
               fontWeight: 600,
               transition: "all 0.2s",
             }}
-              onMouseEnter={e => { if (activeTab !== t) { (e.target as HTMLButtonElement).style.borderColor = "var(--color-border-accent-active)"; (e.target as HTMLButtonElement).style.color = "var(--color-accent-primary)"; } }}
-              onMouseLeave={e => { if (activeTab !== t) { (e.target as HTMLButtonElement).style.borderColor = "rgba(99, 96, 96, 0.56)"; (e.target as HTMLButtonElement).style.color = "var(--color-text-muted)"; } }}
+              onMouseEnter={e => { if (activeTab !== t) { (e.target as HTMLButtonElement).style.background = "var(--color-accent-secondary)"; (e.target as HTMLButtonElement).style.color = "white"; } }}
+              onMouseLeave={e => { if (activeTab !== t) { (e.target as HTMLButtonElement).style.background = "transparent"; (e.target as HTMLButtonElement).style.color = "var(--color-text-muted)"; } }}
             >{t}</button>
           ))}
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))", gap: "1.5px", background: "var(--color-border-primary)" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: "1.5px", background: "var(--color-border-primary)" }}>
           {currentProjects.map((p, i) => (
-            <FadeIn key={p.id} delay={i * 0.07}>
+            <FadeIn variant="slide-left" delay={i * 0.025} key={p.id}>
               <div
                 onMouseEnter={() => setHovered(p.id)}
                 onMouseLeave={() => setHovered(null)}
@@ -608,20 +610,20 @@ function Projects() {
                   </div>
                   <h3 style={{
                     fontFamily: "var(--font-family-display)",
-                    fontSize: "1.15rem",
+                    fontSize: "clamp(1rem, 2.5vw, 1.15rem)",
                     fontWeight: 700,
                     color: hovered === p.id ? "var(--color-accent-primary)" : "var(--color-text-primary)",
                     margin: "0 0 0.75rem 0",
                     transition: "color 0.25s",
                     letterSpacing: "-0.02em",
                   }}>{p.title}</h3>
-                  <p style={{ fontFamily: "var(--font-family-body)", fontSize: "0.88rem", color: "var(--color-text-subtle)", lineHeight: 1.7, margin: "0 0 1.5rem 0" }}>{p.desc}</p>
+                  <p style={{ fontFamily: "var(--font-family-body)", fontSize: "clamp(0.8rem, 2vw, 0.88rem)", color: "var(--color-text-subtle)", lineHeight: 1.7, margin: "0 0 1.5rem 0" }}>{p.desc}</p>
                 </div>
                 <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
                   {p.tags.map(t => (
                     <span key={t} style={{
                       fontFamily: "var(--font-family-mono)",
-                      fontSize: "0.62rem",
+                      fontSize: "clamp(0.55rem, 1.5vw, 0.62rem)",
                       letterSpacing: "0.08em",
                       color: "var(--color-accent-primary)",
                       background: "rgba(199, 91, 42, 0.06)",
@@ -644,83 +646,76 @@ function CV({ onDownloadCV }: { onDownloadCV: () => void }) {
   const [activeType, setActiveType] = useState("Education");
 
   return (
-    <section id="cv" style={{ padding: "8rem 2.5rem 4rem" }}>
-      <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
-        <FadeIn>
-          <div style={{ fontFamily: "var(--font-family-mono)", fontSize: "0.7rem", letterSpacing: "0.2em", color: "var(--color-accent-primary)", marginBottom: "1rem" }}>
-            {`// ${CONTENT.sections.cv.label}`}
-          </div>
-          <h2 style={{ fontFamily: "'Poppins', sans-serif", fontSize: "clamp(2rem, 5vw, 3.5rem)", fontWeight: 800, color: "var(--color-text-primary)", margin: "0 0 3rem 0", letterSpacing: "-0.03em" }}>
+    <section id="cv" style={{ padding: "5rem 1rem 4rem" }}>
+      <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "0 1.5rem" }}>
+        <FadeIn variant="slide-left"> 
+          <h2 style={{ fontFamily: "'Poppins', sans-serif", fontSize: "clamp(2rem, 5vw, 3.5rem)", fontWeight: 800, color: "var(--color-text-primary)", margin: "0 0 3rem 0", letterSpacing: "-0.03em", textAlign: "center" }}>
             {CONTENT.sections.cv.title}
           </h2>
         </FadeIn>
 
-        <div style={{ display: "flex", gap: "0.75rem", marginBottom: "3rem", flexWrap: "wrap" }}>
+        <div style={{ display: "flex", gap: "0.75rem", marginBottom: "3rem", flexWrap: "wrap", justifyContent: "center" }}>
           {types.map(t => (
             <button key={t} onClick={() => setActiveType(t)} style={{
               background: activeType === t ? "var(--color-accent-primary)" : "transparent",
               color: activeType === t ? "white" : "var(--color-text-muted)",
-              border: "1px solid rgba(99, 96, 96, 0.56)",
+              border: `1px solid ${activeType === t ? "var(--color--accent--primary)" : "rgba(99, 96, 96, 0.22)"}`,
+              borderRadius: "10px",
               cursor: "pointer",
-              padding: "0.6rem 1.5rem",
+              padding: "0.6rem 1rem",
               fontFamily: "var(--font-family-mono)",
-              fontSize: "0.7rem",
+              fontSize: "clamp(0.65rem, 1.5vw, 0.7rem)",
               letterSpacing: "0.12em",
               textTransform: "uppercase",
               fontWeight: 600,
               transition: "all 0.2s",
             }}
-              onMouseEnter={e => { if (activeType !== t) { (e.target as HTMLButtonElement).style.borderColor = "var(--color-border-accent-active)"; (e.target as HTMLButtonElement).style.color = "var(--color-accent-primary)"; } }}
-              onMouseLeave={e => { if (activeType !== t) { (e.target as HTMLButtonElement).style.borderColor = "rgba(99, 96, 96, 0.56)"; (e.target as HTMLButtonElement).style.color = "var(--color-text-muted)"; } }}
+              onMouseEnter={e => { if (activeType !== t) { (e.target as HTMLButtonElement).style.background = "var(--color-accent-secondary)"; (e.target as HTMLButtonElement).style.color = "white"; } }}
+              onMouseLeave={e => { if (activeType !== t) { (e.target as HTMLButtonElement).style.background = "transparent"; (e.target as HTMLButtonElement).style.color = "var(--color-text-muted)"; } }}
             >{t}</button>
           ))}
         </div>
 
         <div style={{ display: "flex", flexDirection: "column", gap: "0", minHeight: "200px" }}>
           {CV_ITEMS.filter(item => item.type === activeType).map((item, i) => (
-            <FadeIn key={i} delay={i * 0.08}>
+            <FadeIn variant="slide-left" key={i} delay={i * 0.08}>
               <div style={{
                 padding: "2rem 0",
                 borderBottom: "1px solid var(--color-border-secondary)",
                 display: "grid",
                 gridTemplateColumns: "1fr 2fr 1fr",
-                gap: "2rem",
+                gap: "1rem",
                 alignItems: "start",
               }}>
                 <div>
-                  <div style={{ fontFamily: "'Poppins', sans-serif", fontSize: "1rem", fontWeight: 700, color: "var(--color-text-primary)", marginBottom: "0.3rem" }}>{item.title}</div>
-                  {item.org && <div style={{ fontFamily: "'Roboto Mono', monospace", fontSize: "0.68rem", letterSpacing: "0.1em", color: "var(--color-accent-primary)", textTransform: "uppercase" }}>{item.org}</div>}
+                  <div style={{ fontFamily: "'Poppins', sans-serif", fontSize: "clamp(0.9rem, 2vw, 1rem)", fontWeight: 700, color: "var(--color-text-primary)", marginBottom: "0.3rem" }}>{item.title}</div>
+                  {item.org && <div style={{ fontFamily: "'Roboto Mono', monospace", fontSize: "clamp(0.6rem, 1.5vw, 0.68rem)", letterSpacing: "0.1em", color: "var(--color-accent-primary)", textTransform: "uppercase" }}>{item.org}</div>}
                 </div>
-                <div style={{ fontFamily: "'Roboto', sans-serif", fontSize: "0.9rem", color: "var(--color-text-muted)", lineHeight: 1.7 }}>{item.detail}</div>
-                {item.period && <div style={{ fontFamily: "'Roboto Mono', monospace", fontSize: "0.68rem", letterSpacing: "0.1em", color: "var(--color-text-minimal)", textAlign: "right" }}>{item.period}</div>}
+                <div style={{ fontFamily: "'Roboto', sans-serif", fontSize: "clamp(0.8rem, 2vw, 0.9rem)", color: "var(--color-text-muted)", lineHeight: 1.7 }}>{item.detail}</div>
+                {item.period && <div style={{ fontFamily: "'Roboto Mono', monospace", fontSize: "clamp(0.6rem, 1.5vw, 0.68rem)", letterSpacing: "0.1em", color: "var(--color-text-minimal)", textAlign: "right" }}>{item.period}</div>}
               </div>
             </FadeIn>
           ))}
         </div>
 
-        <FadeIn delay={0.3}>
-          <div style={{ marginTop: "4rem", paddingTop: "3rem", borderTop: "1px solid var(--color-border-primary)", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap" }}>
-            <div>
-              <div style={{ fontFamily: "'Poppins', sans-serif", fontSize: "1.2rem", fontWeight: 700, color: "var(--color-text-primary)", marginBottom: "0.3rem" }}>{CONTENT.sections.cv.cta}</div>
-              <div style={{ fontFamily: "'Roboto', sans-serif", fontSize: "0.9rem", color: "var(--color-text-faint)" }}>Download my complete CV as a PDF.</div>
-            </div>
+        <FadeIn variant="slide-left" delay={0.3}>
+          <div style={{ marginTop: "4rem", paddingTop: "3rem", borderTop: "1px solid var(--color-border-primary)", display: "flex", justifyContent: "center", alignItems: "center" }}>
             <button
               onClick={onDownloadCV}
               style={{
               background: "var(--color-accent-primary)", color: "white",
-              border: "1px solid var(--color-accent-primary)",
+              borderRadius: "10px",
               cursor: "pointer",
-              padding: "0.85rem 2rem",
+              padding: "0.65rem 1rem",
               fontFamily: "var(--font-family-mono)",
               fontSize: "0.75rem",
               letterSpacing: "0.12em",
               fontWeight: 600,
               textTransform: "uppercase",
               transition: "all 0.2s",
-              marginTop: "1rem",
             }}
-              onMouseEnter={e => { (e.target as HTMLButtonElement).style.background = "var(--color-accent-secondary)"; (e.target as HTMLButtonElement).style.borderColor = "var(--color-accent-secondary)"; }}
-              onMouseLeave={e => { (e.target as HTMLButtonElement).style.background = "var(--color-accent-primary)"; (e.target as HTMLButtonElement).style.borderColor = "var(--color-accent-primary)"; }}
+              onMouseEnter={e => { (e.target as HTMLButtonElement).style.background = "var(--color-accent-secondary)";}}
+              onMouseLeave={e => { (e.target as HTMLButtonElement).style.background = "var(--color-accent-primary)";}}
             >
               {CONTENT.sections.cv.ctaButton}
             </button>
@@ -734,7 +729,7 @@ function CV({ onDownloadCV }: { onDownloadCV: () => void }) {
 function Footer() {
   return (
     <footer style={{
-      padding: "1rem 5rem",
+      padding: "1rem clamp(1rem, 5vw, 5rem)",
       borderTop: "1px solid var(--color-border-primary)",
       display: "flex",
       justifyContent: "space-between",
@@ -742,14 +737,14 @@ function Footer() {
       flexWrap: "wrap",
       gap: "1rem",
     }}>
-      <span style={{ fontFamily: "'Roboto Mono', monospace", fontSize: "0.7rem", letterSpacing: "0.15em", color: "var(--color-text-tiny)" }}>
+      <span style={{ fontFamily: "'Roboto Mono', monospace", fontSize: "clamp(0.6rem, 1.5vw, 0.7rem)", letterSpacing: "0.15em", color: "var(--color-text-tiny)" }}>
         {CONTENT.footer.copyright}
       </span>
-      <div style={{ display: "flex", gap: "2rem" }}>
+      <div style={{ display: "flex", gap: "clamp(1rem, 3vw, 2rem)", flexWrap: "wrap" }}>
         {CONTENT.footer.socialLinks.map(link => (
           <a key={link.label} href={link.url} style={{
             fontFamily: "'Roboto Mono', monospace",
-            fontSize: "0.7rem",
+            fontSize: "clamp(0.6rem, 1.5vw, 0.7rem)",
             letterSpacing: "0.12em",
             color: "var(--color-text-extra-faint)",
             textDecoration: "none",
@@ -794,7 +789,7 @@ export default function Portfolio() {
     const obs = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) setActiveSection(e.target.id); });
     }, { threshold: 0.4 });
-    ["home", "about", "projects", "cv"].forEach(id => {
+    ["home", "projects", "cv"].forEach(id => {
       const el = document.getElementById(id);
       if (el) obs.observe(el);
     });
@@ -820,7 +815,6 @@ export default function Portfolio() {
       <div ref={scrollRef} style={{ height: "100vh", overflowY: "auto", padding: "0", position: "relative", background: "var(--color-bg-primary)" }}>
         <Nav active={activeSection} onNav={scrollTo} scrollRef={scrollRef} />
         <Hero onNav={scrollTo} onDownloadCV={downloadCV} />
-        <About />
         <Projects />
         <CV onDownloadCV={downloadCV} />
         <Footer />
