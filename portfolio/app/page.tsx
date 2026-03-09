@@ -145,14 +145,14 @@ const CV_ITEMS = [
     title: "Mechatronics Design Engineer",
     org: "Gracol Composites LTD",
     period: "Nov 2023 – present",
-    detail: "Developed automated hardware testing rigs using Python & LabVIEW",
+    detail: "Collaborated on composite structural system design, applying mechanical analysis, material characterisation, and standardised testing. Designed parametric 3D-printed forming tools to improve pultrusion efficiency. Developed embedded monitoring systems for load, VOC, thermal, and NDT analysis, plus automated dangerous goods temperature alerting. Built internal engineering tools including quoting calculators, structural analysis tools, and production databases to improve workflow and traceability.",
   },
   {
     type: "Experience",
     title: "Workshop Engineer Trainee",
     org: "Reed Industrial LTD",
     period: "Nov 2021 – Feb 2022",
-    detail: "Contributed to soft robotics actuator research; 1 co-authored paper",
+    detail: "Practical manufacturing experience in CNC machining, G-code programming, general machining, strengthening design-for-manufacture understanding.",
   },
   {
   type: "Experience",
