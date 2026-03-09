@@ -10,8 +10,8 @@ import HeptaGrid from "@/components/HeptaGrid";
 const CONTENT = {
   name: "Callum Greig",
   role: "Mechatronics Engineer",
-  tagline: ["Hi, I’m Callum. I enjoy designing innovative engineering solutions that turn complex problems into practical systems — spanning embedded systems, manufacturing, automation, and custom-built hardware and software.",
-    " I’m driven by curiosity and a love of tinkering, with a focus on solutions that combine good engineering, thoughtful design, and long-term sustainability.",
+  tagline: ["Hi, I'm Callum. I enjoy designing innovative engineering solutions that turn complex problems into practical systems — spanning embedded systems, manufacturing, automation, and custom-built hardware and software.",
+    " I'm driven by curiosity and a love of tinkering, with a focus on solutions that combine good engineering, thoughtful design, and long-term sustainability.",
   ],
   contactme: "Feel free to get in touch with me at callumgreig20@gmail.com",
   sections: {
@@ -20,7 +20,6 @@ const CONTENT = {
     },
     cv: {
       title: "Background",
-      ctaButton: "Download CV",
     },
   },
   footer: {
@@ -332,7 +331,7 @@ function Nav({ active, onNav, scrollRef }: { active: string; onNav: (section: st
   );
 }
 
-function Hero({ onNav, onDownloadCV }: { onNav: (section: string) => void; onDownloadCV: () => void }) {
+function Hero() {
   const [typed, setTyped] = useState("");
   const full = CONTENT.role;
   
@@ -477,52 +476,6 @@ function Hero({ onNav, onDownloadCV }: { onNav: (section: string) => void; onDow
             ))}
           </p>
 
-          <div style={{ 
-            display: "flex", 
-            gap: "1rem", 
-            flexWrap: "wrap",
-            justifyContent: "center",
-            pointerEvents: "auto",
-          }}>
-            <button
-              onClick={() => onNav("projects")}
-              style={{
-                background: "var(--color-accent-primary)", color: "white",
-                borderRadius: "10px",
-                padding: "0.65rem 1rem",
-                fontFamily: "var(--font-family-mono)",
-                fontSize: "clamp(0.7rem, 2vw, 0.75rem)",
-                letterSpacing: "0.12em",
-                fontWeight: 600,
-                textTransform: "uppercase",
-                transition: "all 0.2s",
-              }}
-              onMouseEnter={e => { (e.target as HTMLButtonElement).style.background = "var(--color-accent-secondary)";}}
-              onMouseLeave={e => { (e.target as HTMLButtonElement).style.background = "var(--color-accent-primary)";}}
-            >
-              View Projects
-            </button>
-            <button
-              onClick={onDownloadCV}
-              style={{
-                background: "var(--color-accent-primary)", color: "white",
-                borderRadius: "10px",
-                cursor: "pointer",
-                padding: "0.65rem 1rem",
-                fontFamily: "var(--font-family-mono)",
-                fontSize: "clamp(0.7rem, 2vw, 0.75rem)",
-                letterSpacing: "0.12em",
-                fontWeight: 600,
-                textTransform: "uppercase",
-                transition: "all 0.2s",
-              }}
-              onMouseEnter={e => { (e.target as HTMLButtonElement).style.background = "var(--color-accent-secondary)";}}
-              onMouseLeave={e => { (e.target as HTMLButtonElement).style.background = "var(--color-accent-primary)";}}
-            >
-              Download CV
-            </button>
-          </div>
-
           <p style={{
             fontFamily: "var(--font-family-body)",
             fontSize: "clamp(0.9rem, 2.5vw, 1rem)",
@@ -614,7 +567,7 @@ function Projects() {
                   cursor: "pointer",
                   transition: "background 0.25s, transform 0.25s",
                   position: "relative",
-                  minHeight: "650px",
+                  minHeight: "520px",
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "space-between",
@@ -672,7 +625,7 @@ function Projects() {
   );
 }
 
-function CV({ onDownloadCV }: { onDownloadCV: () => void }) {
+function CV() {
   const types = [...new Set(CV_ITEMS.map(i => i.type))];
   const [activeType, setActiveType] = useState("Education");
 
@@ -803,30 +756,6 @@ function CV({ onDownloadCV }: { onDownloadCV: () => void }) {
             ))
           )}
         </div>
-
-        <FadeIn variant="slide-left" delay={0.3}>
-          <div style={{ marginTop: "4rem", paddingTop: "3rem", borderTop: "1px solid var(--color-border-primary)", display: "flex", justifyContent: "center", alignItems: "center" }}>
-            <button
-              onClick={onDownloadCV}
-              style={{
-              background: "var(--color-accent-primary)", color: "white",
-              borderRadius: "10px",
-              cursor: "pointer",
-              padding: "0.65rem 1rem",
-              fontFamily: "var(--font-family-mono)",
-              fontSize: "0.75rem",
-              letterSpacing: "0.12em",
-              fontWeight: 600,
-              textTransform: "uppercase",
-              transition: "all 0.2s",
-            }}
-              onMouseEnter={e => { (e.target as HTMLButtonElement).style.background = "var(--color-accent-secondary)";}}
-              onMouseLeave={e => { (e.target as HTMLButtonElement).style.background = "var(--color-accent-primary)";}}
-            >
-              {CONTENT.sections.cv.ctaButton}
-            </button>
-          </div>
-        </FadeIn>
       </div>
     </section>
   );
@@ -898,22 +827,13 @@ export default function Portfolio() {
     el?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const downloadCV = () => {
-    const link = document.createElement('a');
-    link.href = CONTENT.cvUrl;
-    link.download = 'CV - Callum Greig.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
   return (
     <div style={{ position: "relative", overflow: "hidden" }}>
       <div ref={scrollRef} style={{ height: "100vh", overflowY: "auto", padding: "0", position: "relative", background: "var(--color-bg-primary)" }}>
         <Nav active={activeSection} onNav={scrollTo} scrollRef={scrollRef} />
-        <Hero onNav={scrollTo} onDownloadCV={downloadCV} />
+        <Hero />
         <Projects />
-        <CV onDownloadCV={downloadCV} />
+        <CV />
         <Footer />
         <div style={{ height: "10rem" }} />
       </div>
