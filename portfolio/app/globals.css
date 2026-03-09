@@ -15,7 +15,7 @@
   --color-accent-status: #7A8C6E;
 
   /* Text Colors */
-  --color-text-primary: #000000;
+  --color-text-primary: #363636;
   --color-text-secondary: rgb(48, 48, 48);
   --color-text-muted: rgb(41, 41, 41);
   --color-text-subtle: rgba(44, 44, 44, 0.4);
@@ -56,7 +56,7 @@
   --font-size-7xl: 1.2rem;
   --font-size-8xl: 2.2rem;
   --font-size-hero-name: clamp(3rem, 8vw, 7rem);
-  --font-size-hero-title: clamp(1.5rem, 4vw, 3.2rem);
+  --font-size-hero-title: clamp(1.5rem, 4vw, 3rem);
   --font-size-section-heading: clamp(2rem, 5vw, 3.5rem);
 
   /* Font Weights */

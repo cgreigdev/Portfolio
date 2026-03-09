@@ -46,10 +46,10 @@ const items = [
 const PROJECTS = [
   {
     id: 1,
-    title: "Auto Tool Changing CNC Macine",
-    tags: ["Embedded Systems", "PCB Design", "G-Code", "DFMA"],
-    year: "2024-2026",
-    desc: "Designed and implemented a CNC control architecture integrating motion drives, power systems, sensors, machine I/O, tooling automation, integrated safety systems, and operational manuals/SOP. Increased manufacturing efficiency by 200% and reduced manual intervention by 80%.",
+    title: "Full Year Project – Non Destructive Testing of Composite Structures",
+    tags: ["Phased-Aray Ultrasonic NDT", "Composite Material Analysis", "Airframe Structural Testing", "Data Analysis"],
+    year: "2023",
+    desc: "NDT analysis of MKII-A Composite Airframe, evaluate validity of NDT methods for detecting CFRP long-term performance, airframe load testing, and evaluate real-time diagnosis methods of airframe structural health.",
     status: "Complete",
   },
   {
@@ -62,28 +62,32 @@ const PROJECTS = [
   },
   {
     id: 3,
-    title: "Full Year Project – Non Destructive Testing of Composite Structures",
-    tags: ["Phased-Aray Ultrasonic NDT", "Composite Material Analysis", "Airframe Structural Testing", "Data Analysis"],
-    year: "2023",
-    desc: "NDT analysis of MKII-A Composite Airframe, evaluate validity of NDT methods for detecting CFRP long-term performance, airframe load testing, and evaluate real-time diagnosis methods of airframe structural health.",
+    title: "Hazardous Chemical Storage Temperature Monitoring System",
+    tags: ["Embedded Electronics", "Time-series Data Systems", "Networking and IoT", "Systems Engineering"],
+    year: "2024-2025",
+    desc: "Designed and deployed an ESP32-based temperature monitoring system for hazardous chemical storage, integrating IoT telemetry with time-series data logging. The solution provides continuous 24/7 monitoring for notification of temperature deviations/warnings.",
     status: "Complete",
   },
   {
     id: 4,
-    title: "Hazardous Chemical Storage Temperature Monitoring System",
-    tags: ["Embedded Electronics", "Time-series Data Systems", "Networking and IoT", "Systems Engineering"],
-    year: "2024",
-    desc: "Designed and deployed an ESP32-based temperature monitoring system for hazardous chemical storage, integrating IoT telemetry with time-series data logging. The solution provides continuous 24/7 monitoring for notification of temperature deviations/warnings.",
+    title: "Auto Tool Changing CNC Macine",
+    tags: ["Embedded Systems", "PCB Design", "G-Code", "DFMA"],
+    year: "2024-2026",
+    desc: "Designed and implemented a CNC control architecture integrating motion drives, power systems, sensors, machine I/O, tooling automation, integrated safety systems, and operational manuals/SOP. Increased manufacturing efficiency by 200% and reduced manual intervention by 80%.",
     status: "Complete",
   },
   {
     id: 5,
     title: "Manufacturing Data & Product Database System",
     tags: ["Database Design", "Process Optimisation", "Data Analysis", "Automation"],
-    year: "2024",
-    desc: "Developed an internal SQL-based database for pultruded composite products integrating production setup sheets, troubleshooting records, and engineering data. Implemented tools for manufacturing issue tracking, resin composition management, and pricing calculators. Improving process optimisation and project costing.",
+    year: "2025-2026",
+    desc: "Developed an database for pultruded products integrating production setup sheets, troubleshooting records, and engineering data. Implemented tools for issue tracking, resin recipe management, and pricing calculators. Improving process optimisation and project costing.",
     status: "Ongoing",
   },
+
+
+
+
 ];
 
 const PERSONAL_PROJECTS = [
@@ -92,41 +96,42 @@ const PERSONAL_PROJECTS = [
     title: "3D Printed TPU Discs – Aerodynamic Design Iteration",
     tags: ["3D Printing", "Aerodynamics", "Iterative Design", "CAD Modelling"],
     year: "2023",
-    desc: "Designed and 3D printed flexible TPU discs, applying iterative CAD modelling and aerodynamic analysis to optimise flight performance. Prototypes were tested and refined through successive design cycles, improving stability, distance, and flight consistency while exploring material behaviour under dynamic conditions.",
+    desc: "Designed and 3D-printed flexible TPU discs, using iterative CAD modelling and aerodynamic analysis to optimise flight performance. Prototypes tested and refined to improve flight characteristics.",
     status: "Complete",
   },
   {
     id: 2,
+    title: "Gravity Fed Hydroponic Cultivation System Design",
+    tags: ["CAD Design", "3D Printing", "Environmental Measurement", "Sustainable Systems"],
+    year: "2023",
+    desc: "Prototyped a gravity-fed hydroponic system for chilli peppers with 3D-printed self-wicking cores. Optimized nutrient delivery through CAD modelling and solution testing, emphasizing passive watering, manufacturability, and sustainability.",
+    status: "Complete",
+  }, 
+  {
+    id: 3,
     title: "Homelab Infrastructure & Systems Experimentation",
     tags: ["Virtualisation", "Networking", "Automation", "Infrastructure Management"],
     year: "2024–2026",
-    desc: "Built and maintained a personal homelab environment for systems learning, software experimentation, and infrastructure testing. The setup includes virtualisation platforms, containerised services, and networked applications used to explore server management, deployment workflows, and system reliability concepts. Focus was placed on practical engineering learning, platform stability, and experimenting with modern infrastructure tooling.",
-    status: "Ongoing",
-  },
-  {
-    id: 3,
-    title: "Multi-Protocol Embedded Universal Control Device",
-    tags: ["Embedded Systems", "Wireless Communication", "Sensor Integration", "C/C++"],
-    year: "2025-2026",
-    desc: "Developed a handheld embedded device platform supporting multiple communication and sensing technologies including infrared, radio frequency, NFC, Bluetooth, and WiFi experimentation. The project also explored low-power firmware architecture, signal acquisition and reproduction workflows, and integration of time-of-flight and motion sensing components for physical measurement and interaction research. Emphasis was placed on modular firmware design, energy efficiency, and hardware interface prototyping.",
+    desc: "Built and maintained a personal homelab for systems learning and infrastructure experimentation, using virtualisation, containerised services, and networked applications to explore server management and deployment workflows.",
     status: "Ongoing",
   },
   {
     id: 4,
-    title: "Creative Worldbuilding, Campaign Systems, and Knowledge Database Design",
-    tags: ["Systems Design", "Worldbuilding", "Map Design", "Creative Engineering"],
-    year: "2026",
-    desc: "Developed an integrated creative design environment supporting tabletop campaign development for a Dungeons & Dragons role-playing framework. The project combines structured narrative worldbuilding, custom environmental map design, and automated note organisation using an Obsidian-based knowledge database system. The vault functions as a decision support and planning assistant for campaign development, enabling hierarchical story tracking, character and event relationships, and design iteration. The work demonstrates application of systems thinking to creative domain modelling.",
+    title: "Multi-Protocol Embedded Universal Control Device",
+    tags: ["Embedded Systems", "Wireless Communication", "Sensor Integration", "C/C++"],
+    year: "2025-2026",
+    desc: "Developed a handheld embedded device platform supporting infrared, RF, NFC, Bluetooth, and WiFi experimentation. Explored low-power firmware design, signal acquisition workflows, and integration of time-of-flight and motion sensors for measurement and interaction research.",
     status: "Ongoing",
   },
   {
     id: 5,
-    title: "Gravity Fed Hydroponic Cultivation System Design",
-    tags: ["CAD Design", "3D Printing", "Environmental Measurement", "Sustainable Systems"],
-    year: "2023",
-    desc: "Designed and prototyped a gravity-fed hydroponic growing system for chilli pepper cultivation, incorporating 3D printed self-wicking internal cores to regulate nutrient distribution. The project involved iterative CAD modelling, physical prototyping, and testing of nutrient solution properties including electrical conductivity and pH balance to optimise plant health and growth conditions. Focus was placed on reliable passive water delivery, structural manufacturability, and sustainable cultivation principles.",
-    status: "Complete",
-  }, 
+    title: "Creative Worldbuilding and Knowledge Database Design",
+    tags: ["Systems Design", "Worldbuilding", "Map Design", "Creative Engineering"],
+    year: "2026",
+    desc: "Developed a creative design environment for tabletop campaign development using an Obsidian-based knowledge database. The system supports structured worldbuilding, map design, and organised campaign planning with hierarchical story and character relationships.",
+    status: "Ongoing",
+  },
+
 ];
 
 const CV_ITEMS = [
@@ -303,13 +308,13 @@ function Nav({ active, onNav, scrollRef }: { active: string; onNav: (section: st
       transition: "all 0.4s ease",
     }}>
       <span style={{
-        fontFamily: "var(--font-family-mono)",
+        fontFamily: "var(--font-inter)",
         fontSize: "clamp(0.9rem, 2.5vw, 1.05rem)",
         letterSpacing: "0.15em",
         color: "var(--color-text-primary)",
         opacity: 1,
       }}>
-        C<span style={{ color: "var(--color-accent-primary)" }}>.</span>Greig
+        C<span style={{ color: "var(--color-accent-secondary)" }}>.</span>Greig
       </span>
       <div style={{ height: "60px", position: "relative" }}>
         <GooeyNav
@@ -330,6 +335,7 @@ function Nav({ active, onNav, scrollRef }: { active: string; onNav: (section: st
 function Hero({ onNav, onDownloadCV }: { onNav: (section: string) => void; onDownloadCV: () => void }) {
   const [typed, setTyped] = useState("");
   const full = CONTENT.role;
+  
   useEffect(() => {
     let i = 0;
     const t = setInterval(() => {
@@ -388,7 +394,7 @@ function Hero({ onNav, onDownloadCV }: { onNav: (section: string) => void; onDow
         <div style={{ 
           maxWidth: "1200px", 
           margin: "0 auto",
-          padding: "0 1.5rem",
+          padding: "3rem",
           position: "relative",
           width: "100%",
           pointerEvents: "none",
@@ -408,7 +414,7 @@ function Hero({ onNav, onDownloadCV }: { onNav: (section: string) => void; onDow
               overflow: "hidden",
               border: "3px solid var(--color-accent-primary)",
               boxShadow: "0 0 40px #6b7d5f77",
-              marginBottom: "2rem",
+              marginBottom: "0rem",
               display: "none", // Hidden by default
             }}>
               <img
@@ -426,43 +432,42 @@ function Hero({ onNav, onDownloadCV }: { onNav: (section: string) => void; onDow
             <DecryptedText
               text={CONTENT.name}
               style={{
-                fontFamily: "var(--font-family-mono)",
+                fontFamily: "var(--font-inter)",
                 fontSize: "var(--font-size-hero-name)",
-                fontWeight: 800,
+                fontWeight: 500,
                 lineHeight: 1.0,
                 color: "var(--color-accent-primary)",
-                margin: "0 0 0.5rem 0",
+                marginBottom: "-0.5rem",
                 letterSpacing: "-0.03em",
               }}
               animateOn="view"
-              revealDirection ="start"
+              revealDirection ="center"
               maxIterations={10}
               sequential={true}
-
               speed={100}
             />
           </div>
 
           <div style={{
-            fontFamily: "var(--font-family-mono)",
+            fontFamily: "var(--font-inter)",
             fontSize: "var(--font-size-hero-title)",
-            fontWeight: 300,
+            fontWeight: 600,
             color: "var(--color-text-secondary)",
-            marginBottom: "2rem",
+            marginBottom: "0rem",
             minHeight: "1.2em",
             letterSpacing: "-0.02em",
             textAlign: "center",
           }}>
-            {typed}<span style={{ color: "var(--color-accent-primary)", animation: "blink 1s step-end infinite" }}>_</span>
+            {typed}<span style={{ color: "var(--color-accent-secondary)", animation: "blink 1s step-end infinite" }}>_</span>
           </div>
 
           <p style={{
             fontFamily: "var(--font-family-body)",
             fontSize: "clamp(0.9rem, 2.5vw, 1.05rem)",
             color: "var(--color-text-muted)",
-            maxWidth: "800px",
+            maxWidth: "1200px",
             lineHeight: 1.75,
-            marginBottom: "2rem",
+            marginBottom: "1rem",
             textAlign: "center",
             marginLeft: "auto",
             marginRight: "auto",
@@ -520,17 +525,37 @@ function Hero({ onNav, onDownloadCV }: { onNav: (section: string) => void; onDow
 
           <p style={{
             fontFamily: "var(--font-family-body)",
-            fontSize: "clamp(0.9rem, 2.5vw, 1.05rem)",
+            fontSize: "clamp(0.9rem, 2.5vw, 1rem)",
             color: "var(--color-text-muted)",
-            padding: "2rem",
-            maxWidth: "800px",
+            padding: "1rem",
+            maxWidth: "1200px",
             lineHeight: 1.75,
-            marginBottom: "2rem",
+            marginBottom: "1rem",
             textAlign: "center",
             marginLeft: "auto",
             marginRight: "auto",
           }}>
-            {CONTENT.contactme}
+            Feel free to get in touch with me at{" "}
+            <a
+              href="mailto:callumgreig20@gmail.com"
+              style={{
+                color: "var(--color-accent-primary)",
+                textDecoration: "none",
+                transition: "color 0.2s ease, text-decoration 0.2s ease",
+                cursor: "pointer",
+                pointerEvents: "auto",
+              }}
+              onMouseEnter={(e) => {
+                (e.target as HTMLAnchorElement).style.color = "var(--color-accent-secondary)";
+                (e.target as HTMLAnchorElement).style.textDecoration = "underline";
+              }}
+              onMouseLeave={(e) => {
+                (e.target as HTMLAnchorElement).style.color = "var(--color-accent-primary)";
+                (e.target as HTMLAnchorElement).style.textDecoration = "none";
+              }}
+            >
+              callumgreig20@gmail.com
+            </a>
           </p>
         </div>
       </section>
@@ -546,10 +571,10 @@ function Projects() {
   const currentProjects = activeTab === "Professional" ? PROJECTS : PERSONAL_PROJECTS;
 
   return (
-    <section id="projects" style={{ padding: "5rem 1rem", background: "var(--color-bg-primary)", borderTop: "1px solid var(--color-border-secondary)", borderBottom: "1px solid var(--color-border-secondary)" }}>
-      <div style={{ maxWidth: "1600px", margin: "0 auto", padding: "0 1rem" }}>
+    <section id="projects" style={{ padding: "1rem 1rem", background: "var(--color-bg-primary)", borderTop: "1px solid var(--color-border-secondary)", borderBottom: "1px solid var(--color-border-secondary)", scrollMarginTop: "50px" }}>
+      <div style={{ maxWidth: "1600px", margin: "0 auto", padding: "0 0rem" }}>
         <FadeIn variant="slide-left">
-          <h2 style={{ fontFamily: "var(--font-family-display)", fontSize: "var(--font-size-section-heading)", fontWeight: 800, color: "var(--color-text-primary)", margin: "0 0 3.5rem 0", letterSpacing: "-0.03em", textAlign: "center" }}>
+          <h2 style={{ fontFamily: "var(--font-inter)", fontSize: "var(--font-size-section-heading)", fontWeight: 600, color: "var(--color-text-primary)", margin: "0 0 3.5rem 0", letterSpacing: "-0.03em", textAlign: "center" }}>
             {CONTENT.sections.projects.title}
           </h2>
         </FadeIn>
@@ -583,16 +608,17 @@ function Projects() {
                 onMouseEnter={() => setHovered(p.id)}
                 onMouseLeave={() => setHovered(null)}
                 style={{
-                  background: hovered === p.id ? "var(--color-bg-hover)" : "var(--color-bg-primary)",
+                  background: hovered === p.id ? "var(--color-bg-hover)" : "transparent",
                   borderRadius: "10px",
-                  padding: "2.2rem",
+                  padding: "2rem",
                   cursor: "pointer",
-                  transition: "background 0.25s",
+                  transition: "background 0.25s, transform 0.25s",
                   position: "relative",
-                  minHeight: "600px",
+                  minHeight: "650px",
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "space-between",
+                  transform: hovered === p.id ? "scale(1.05)" : "scale(1)",
                 }}
               >
                 <div>
@@ -601,15 +627,19 @@ function Projects() {
                     <span style={{
                       fontFamily: "var(--font-family-mono)", fontSize: "0.6rem",
                       letterSpacing: "0.1em",
-                      color: p.status === "In Progress" ? "var(--color-accent-status)" : "var(--color-accent-primary)",
-                      border: `1px solid ${p.status === "In Progress" ? "var(--color-accent-status)" : "var(--color-accent-primary)" }`,
+                      color: p.status === "Ongoing" ? "var(--color-accent-secondary)" : "var(--color-accent-primary)",
+                      border: `1px solid ${p.status === "Ongoing" ? "var(--color-accent-secondary)" : "var(--color-accent-primary)" }`,
                       borderRadius: "10px",
                       padding: "0.2rem 0.6rem",
                       textTransform: "uppercase",
+                      transform: hovered === p.id ? "scale(0.952)" : "scale(1)",
+                      transition: "transform 0.25s",
+                      transformOrigin: "top right",
+                      display: "inline-block",
                     }}>{p.status}</span>
                   </div>
                   <h3 style={{
-                    fontFamily: "var(--font-family-display)",
+                    fontFamily: "var(--font-inter)",
                     fontSize: "clamp(1rem, 2.5vw, 1.15rem)",
                     fontWeight: 600,
                     color: hovered === p.id ? "var(--color-accent-secondary)" : "var(--color-text-primary)",
@@ -647,10 +677,10 @@ function CV({ onDownloadCV }: { onDownloadCV: () => void }) {
   const [activeType, setActiveType] = useState("Education");
 
   return (
-    <section id="cv" style={{ padding: "5rem 1rem 4rem" }}>
-      <div style={{ maxWidth: "1100px", margin: "0 auto", padding: "0 1.5rem" }}>
+    <section id="cv" style={{ padding: "1rem 1rem", scrollMarginTop: "80px" }}>
+      <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 1.5rem" }}>
         <FadeIn variant="slide-left"> 
-          <h2 style={{ fontFamily: "'Poppins', sans-serif", fontSize: "clamp(2rem, 5vw, 3.5rem)", fontWeight: 800, color: "var(--color-text-primary)", margin: "0 0 3rem 0", letterSpacing: "-0.03em", textAlign: "center" }}>
+          <h2 style={{ fontFamily: "var(--font-inter)", fontSize: "clamp(2rem, 5vw, 3.5rem)", fontWeight: 600, color: "var(--color-text-primary)", margin: "0 0 3rem 0", letterSpacing: "-0.03em", textAlign: "center" }}>
             {CONTENT.sections.cv.title}
           </h2>
         </FadeIn>
@@ -678,25 +708,100 @@ function CV({ onDownloadCV }: { onDownloadCV: () => void }) {
         </div>
 
         <div style={{ display: "flex", flexDirection: "column", gap: "0", minHeight: "200px" }}>
-          {CV_ITEMS.filter(item => item.type === activeType).map((item, i) => (
-            <FadeIn variant="slide-left" key={i} delay={i * 0.08}>
-              <div style={{
-                padding: "1rem 0",
-                borderBottom: "1px solid var(--color-border-secondary)",
-                display: "grid",
-                gridTemplateColumns: activeType === "Hobbies" ? "1fr" : "1fr 2fr 1fr",
-                gap: "1rem",
-                alignItems:  activeType === "Hobbies" ? "anchor-centre" : "start",
-              }}>
-                <div>
-                  <div style={{ fontFamily: "'Poppins', sans-serif", fontSize: "clamp(0.9rem, 2vw, 1rem)", fontWeight: 700, color: "var(--color-text-primary)", marginBottom: "0.3rem" }}>{item.title}</div>
-                  {item.org && <div style={{ fontFamily: "'Roboto Mono', monospace", fontSize: "clamp(0.6rem, 1.5vw, 0.68rem)", letterSpacing: "0.1em", color: "var(--color-accent-primary)", textTransform: "uppercase" }}>{item.org}</div>}
+          {activeType === "Hobbies" ? (
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))", gap: "0.5rem" }}>
+              {CV_ITEMS.filter(item => item.type === activeType).map((item, i) => (
+                <FadeIn variant="fade-up" key={i} delay={i * 0.08}>
+                  <div style={{
+                    padding: "1rem",
+                    borderRadius: "10px",
+                    background: "rgba(199, 91, 42, 0.06)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    textAlign: "center",  
+                    minHeight: "100px",
+                    cursor: "pointer",
+                    transition: "all 0.2s",
+                    color: "var(--color-text-primary)",
+                  }}
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLDivElement).style.background = "var(--color-bg-hover)";
+                    (e.currentTarget as HTMLDivElement).style.transform = "scale(1.03)";
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLDivElement).style.background = "rgba(199, 91, 42, 0.06)";
+                    (e.currentTarget as HTMLDivElement).style.transform = "scale(1)";
+                  }}
+                  >
+                    <div style={{ fontFamily: "var(--font-inter)", fontSize: "clamp(0.85rem, 2vw, 0.95rem)", fontWeight: 600, color: "var(--color-text-primary)" }}>{item.title}</div>
+                  </div>
+                </FadeIn>
+              ))}
+            </div>
+          ) : activeType === "Skills" ? (
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: "1rem" }}>
+              {CV_ITEMS.filter(item => item.type === activeType).map((item, i) => (
+                <FadeIn variant="fade-up" key={i} delay={i * 0.08}>
+                  <div style={{
+                    padding: "1rem",
+                    borderRadius: "10px",
+                    background: "var(--color-bg-secondary)",
+                    minHeight: "200px",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "1rem",
+                    transition: "all 0.2s",
+                  }}
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLDivElement).style.background = "var(--color-bg-hover)";
+                    (e.currentTarget as HTMLDivElement).style.transform = "scale(1.03)";
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLDivElement).style.background = "var(--color-bg-secondary)";
+                    (e.currentTarget as HTMLDivElement).style.transform = "scale(1)";
+                  }}
+                  >
+                    <div style={{ fontFamily: "var(--font-inter)", fontSize: "clamp(0.9rem, 2vw, 1rem)", fontWeight: 700, color: "var(--color-text-primary)" }}>{item.title}</div>
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
+                      {item.detail?.split(" · ").map((skill, idx) => (
+                        <span key={idx} style={{
+                          fontFamily: "var(--font-family-mono)",
+                          fontSize: "clamp(0.55rem, 1.5vw, 0.62rem)",
+                          letterSpacing: "0.08em",
+                          color: "var(--color-accent-primary)",
+                          background: "rgba(199, 91, 42, 0.06)",
+                          borderRadius: "10px",
+                          padding: "0.3rem 0.7rem",
+                          textTransform: "uppercase",
+                        }}>{skill}</span>
+                      ))}
+                    </div>
+                  </div>
+                </FadeIn>
+              ))}
+            </div>
+          ) : (
+            CV_ITEMS.filter(item => item.type === activeType).map((item, i) => (
+              <FadeIn variant="slide-left" key={i} delay={i * 0.08}>
+                <div style={{
+                  padding: "1rem 0",
+                  borderBottom: "1px solid var(--color-border-secondary)",
+                  display: "grid",
+                  gridTemplateColumns: "1fr 2fr 1fr",
+                  gap: "1rem",
+                  alignItems: "start",
+                }}>
+                  <div>
+                    <div style={{ fontFamily: "var(--font-inter)", fontSize: "clamp(0.9rem, 2vw, 1rem)", fontWeight: 700, color: "var(--color-text-primary)", marginBottom: "0.3rem" }}>{item.title}</div>
+                    {item.org && <div style={{ fontFamily: "'Roboto Mono', monospace", fontSize: "clamp(0.6rem, 1.5vw, 0.68rem)", letterSpacing: "0.1em", color: "var(--color-accent-primary)", textTransform: "uppercase" }}>{item.org}</div>}
+                  </div>
+                  <div style={{ fontFamily: "'Roboto', sans-serif", fontSize: "clamp(0.8rem, 2vw, 0.9rem)", color: "var(--color-text-muted)", lineHeight: 1.7 }}>{item.detail}</div>
+                  {item.period && <div style={{ fontFamily: "'Roboto Mono', monospace", fontSize: "clamp(0.6rem, 1.5vw, 0.68rem)", letterSpacing: "0.1em", color: "var(--color-text-minimal)", textAlign: "right" }}>{item.period}</div>}
                 </div>
-                <div style={{ fontFamily: "'Roboto', sans-serif", fontSize: "clamp(0.8rem, 2vw, 0.9rem)", color: "var(--color-text-muted)", lineHeight: 1.7 }}>{item.detail}</div>
-                {item.period && <div style={{ fontFamily: "'Roboto Mono', monospace", fontSize: "clamp(0.6rem, 1.5vw, 0.68rem)", letterSpacing: "0.1em", color: "var(--color-text-minimal)", textAlign: "right" }}>{item.period}</div>}
-              </div>
-            </FadeIn>
-          ))}
+              </FadeIn>
+            ))
+          )}
         </div>
 
         <FadeIn variant="slide-left" delay={0.3}>

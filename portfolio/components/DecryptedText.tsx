@@ -1,11 +1,12 @@
 import { useEffect, useState, useRef } from 'react';
 import { motion } from 'motion/react';
-import type { HTMLMotionProps } from 'motion/react';
+import type { HTMLMotionProps, MotionStyle } from 'motion/react';
+import type { CSSProperties } from 'react';
 
 const styles = {
   wrapper: {
-    display: 'inline-block',
-    whiteSpace: 'pre-wrap'
+    display: 'inline-block' as const,
+    whiteSpace: 'pre-wrap' as const
   },
   srOnly: {
     position: 'absolute' as const,
@@ -19,7 +20,7 @@ const styles = {
   }
 };
 
-interface DecryptedTextProps extends HTMLMotionProps<'span'> {
+interface DecryptedTextProps extends Omit<HTMLMotionProps<'span'>, 'style'> {
   text: string;
   speed?: number;
   maxIterations?: number;
@@ -31,6 +32,7 @@ interface DecryptedTextProps extends HTMLMotionProps<'span'> {
   parentClassName?: string;
   encryptedClassName?: string;
   animateOn?: 'view' | 'hover' | 'both';
+  style?: CSSProperties;
 }
 
 export default function DecryptedText({
@@ -45,6 +47,7 @@ export default function DecryptedText({
   parentClassName = '',
   encryptedClassName = '',
   animateOn = 'hover',
+  style = {},
   ...props
 }: DecryptedTextProps) {
   const [displayText, setDisplayText] = useState<string>(text);
@@ -203,20 +206,22 @@ export default function DecryptedText({
       : {};
 
   return (
-    <motion.span className={parentClassName} ref={containerRef} style={styles.wrapper} {...hoverProps} {...props}>
-      <span style={styles.srOnly}>{displayText}</span>
+    <div style={style}>
+      <motion.span className={parentClassName} ref={containerRef} style={styles.wrapper as any} {...hoverProps} {...props}>
+        <span style={styles.srOnly}>{displayText}</span>
 
-      <span aria-hidden="true">
-        {displayText.split('').map((char, index) => {
-          const isRevealedOrDone = revealedIndices.has(index) || !isScrambling || !isHovering;
+        <span aria-hidden="true">
+          {displayText.split('').map((char, index) => {
+            const isRevealedOrDone = revealedIndices.has(index) || !isScrambling || !isHovering;
 
-          return (
-            <span key={index} className={isRevealedOrDone ? className : encryptedClassName}>
-              {char}
-            </span>
-          );
-        })}
-      </span>
-    </motion.span>
+            return (
+              <span key={index} className={isRevealedOrDone ? className : encryptedClassName}>
+                {char}
+              </span>
+            );
+          })}
+        </span>
+      </motion.span>
+    </div>
   );
 }
