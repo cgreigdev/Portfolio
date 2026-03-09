@@ -871,15 +871,6 @@ export default function Portfolio() {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const link = document.createElement("link");
-    link.rel = "preconnect";
-    link.href = "https://fonts.googleapis.com";
-    document.head.appendChild(link);
-    const link2 = document.createElement("link");
-    link2.rel = "stylesheet";
-    link2.href = "https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;800&family=Roboto:wght@300;400;500&family=Roboto+Mono:wght@400;600&display=swap";
-    document.head.appendChild(link2);
-
     const style = document.createElement("style");
     style.textContent = `
       @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
