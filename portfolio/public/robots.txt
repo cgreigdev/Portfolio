@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /node_modules/
 
-Sitemap: https://portfolio-qch2nhhmf-cgreigdevs-projects.vercel.app/sitemap.xml
+Sitemap: https://portfolio-cgreigdevs-projects.vercel.app/sitemap.xml
