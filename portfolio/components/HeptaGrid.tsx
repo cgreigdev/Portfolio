@@ -86,7 +86,7 @@ export default function HeptaGrid({
         case "diagonal-up-left": gridOffset.current.x = (gridOffset.current.x - effSpeed) % totalSize; gridOffset.current.y = (gridOffset.current.y - effSpeed) % totalSize; break;
       }
 
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.clearRect(0, 0, canvas.offsetWidth, canvas.offsetHeight);
       const cols = Math.ceil(canvas.offsetWidth / totalSize) + 2;
       const rows = Math.ceil(canvas.offsetHeight / totalSize) + 2;
 

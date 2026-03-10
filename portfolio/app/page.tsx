@@ -345,6 +345,22 @@ function Hero() {
     return () => clearInterval(t);
   }, []);
 
+  useEffect(() => {
+    const updateProfilePhotoPosition = () => {
+      const profilePhoto = document.querySelector('.hero-profile-image') as HTMLElement;
+      if (profilePhoto) {
+        const viewportHeight = window.innerHeight;
+        // More lenient on smaller screens: use 40% instead of 50%, max -100px instead of -150px
+        const offset = Math.max(-30, Math.min(-10, -viewportHeight * 0.4));
+        profilePhoto.style.marginTop = `${offset}px`;
+      }
+    };
+
+    updateProfilePhotoPosition();
+    window.addEventListener('resize', updateProfilePhotoPosition);
+    return () => window.removeEventListener('resize', updateProfilePhotoPosition);
+  }, []);
+
   return (
     <>
       <style dangerouslySetInnerHTML={{
@@ -357,9 +373,9 @@ function Hero() {
         `
       }} />
       <section id="home" style={{
-        minHeight: "100vh",
+        minHeight: "calc(100vh - 64px)",
         display: "flex", flexDirection: "column", justifyContent: "center",
-        padding: "0 1rem",
+        padding: "clamp(1rem, 5vw, 2rem) 1rem",
         position: "relative",
         overflow: "hidden",
       }}>
@@ -393,7 +409,7 @@ function Hero() {
         <div style={{ 
           maxWidth: "1200px", 
           margin: "0 auto",
-          padding: "3rem",
+          padding: "clamp(3rem, 10vw, 6rem)",
           position: "relative",
           width: "100%",
           pointerEvents: "none",
@@ -436,7 +452,7 @@ function Hero() {
                 fontWeight: 500,
                 lineHeight: 1.0,
                 color: "var(--color-accent-primary)",
-                marginBottom: "-0.5rem",
+                marginBottom: "1rem",
                 letterSpacing: "-0.03em",
               }}
               animateOn="view"
@@ -452,7 +468,7 @@ function Hero() {
             fontSize: "var(--font-size-hero-title)",
             fontWeight: 600,
             color: "var(--color-text-secondary)",
-            marginBottom: "0rem",
+            marginBottom: "2rem",
             minHeight: "1.2em",
             letterSpacing: "-0.02em",
             textAlign: "center",
@@ -466,7 +482,7 @@ function Hero() {
             color: "var(--color-text-muted)",
             maxWidth: "1200px",
             lineHeight: 1.75,
-            marginBottom: "1rem",
+            marginBottom: "2rem",
             textAlign: "center",
             marginLeft: "auto",
             marginRight: "auto",
@@ -480,10 +496,10 @@ function Hero() {
             fontFamily: "var(--font-family-body)",
             fontSize: "clamp(0.9rem, 2.5vw, 1rem)",
             color: "var(--color-text-muted)",
-            padding: "1rem",
+            padding: "2rem",
             maxWidth: "1200px",
             lineHeight: 1.75,
-            marginBottom: "1rem",
+            marginBottom: "2rem",
             textAlign: "center",
             marginLeft: "auto",
             marginRight: "auto",
@@ -524,8 +540,8 @@ function Projects() {
   const currentProjects = activeTab === "Professional" ? PROJECTS : PERSONAL_PROJECTS;
 
   return (
-    <section id="projects" style={{ padding: "1rem 1rem", background: "var(--color-bg-primary)", borderTop: "1px solid var(--color-border-secondary)", borderBottom: "1px solid var(--color-border-secondary)", scrollMarginTop: "50px" }}>
-      <div style={{ maxWidth: "1600px", margin: "0 auto", padding: "0 0rem" }}>
+    <section id="projects" style={{ padding: "clamp(1.5rem, 5vw, 3rem) clamp(1rem, 5vw, 2rem)", background: "var(--color-bg-primary)", borderTop: "1px solid var(--color-border-secondary)", borderBottom: "1px solid var(--color-border-secondary)", scrollMarginTop: "64px" }}>
+      <div style={{ maxWidth: "1600px", margin: "0 auto", padding: "0 clamp(0.5rem, 3vw, 1.5rem)" }}>
         <FadeIn variant="slide-left">
           <h2 style={{ fontFamily: "var(--font-inter)", fontSize: "var(--font-size-section-heading)", fontWeight: 600, color: "var(--color-text-primary)", margin: "0 0 3.5rem 0", letterSpacing: "-0.03em", textAlign: "center" }}>
             {CONTENT.sections.projects.title}
@@ -554,7 +570,7 @@ function Projects() {
           ))}
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: "5px", background: "var(--color-bg-primary)"}}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(clamp(160px, 100%, 280px), 1fr))", gap: "clamp(5px, 2vw, 10px)", background: "var(--color-bg-primary)", padding: "clamp(0.5rem, 2vw, 1rem)"}}>
           {currentProjects.map((p, i) => (
             <FadeIn variant="slide-left" delay={i * 0.025} key={p.id}>
               <div
@@ -563,11 +579,11 @@ function Projects() {
                 style={{
                   background: hovered === p.id ? "var(--color-bg-hover)" : "transparent",
                   borderRadius: "10px",
-                  padding: "2rem",
+                  padding: "clamp(1.5rem, 4vw, 2rem)",
                   cursor: "pointer",
                   transition: "background 0.25s, transform 0.25s",
                   position: "relative",
-                  minHeight: "520px",
+                  minHeight: "clamp(420px, 100%, 520px)",
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "space-between",
@@ -602,7 +618,7 @@ function Projects() {
                   }}>{p.title}</h3>
                   <p style={{ fontFamily: "var(--font-family-body)", fontSize: "clamp(0.8rem, 2vw, 0.88rem)", color: "var(--color-text-secondary)", lineHeight: 1.7, margin: "0 0 1.5rem 0" }}>{p.desc}</p>
                 </div>
-                <div style={{ display: "grid", gap: "0.3rem", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))"}}>
+                <div style={{ display: "grid", gap: "0.3rem", gridTemplateColumns: "repeat(auto-fill, minmax(clamp(120px, 100%, 200px), 1fr))"}}>
                   {p.tags.map(t => (
                     <span key={t} style={{
                       fontFamily: "var(--font-family-mono)",
@@ -630,8 +646,8 @@ function CV() {
   const [activeType, setActiveType] = useState("Education");
 
   return (
-    <section id="cv" style={{ padding: "1rem 1rem", scrollMarginTop: "80px" }}>
-      <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 1.5rem" }}>
+    <section id="cv" style={{ padding: "clamp(1.5rem, 5vw, 3rem) clamp(1rem, 5vw, 2rem)", scrollMarginTop: "80px" }}>
+      <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 clamp(0.5rem, 3vw, 1.5rem)" }}>
         <FadeIn variant="slide-left"> 
           <h2 style={{ fontFamily: "var(--font-inter)", fontSize: "clamp(2rem, 5vw, 3.5rem)", fontWeight: 600, color: "var(--color-text-primary)", margin: "0 0 3rem 0", letterSpacing: "-0.03em", textAlign: "center" }}>
             {CONTENT.sections.cv.title}
@@ -662,7 +678,7 @@ function CV() {
 
         <div style={{ display: "flex", flexDirection: "column", gap: "0", minHeight: "200px" }}>
           {activeType === "Hobbies" ? (
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))", gap: "0.5rem" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(clamp(120px, 100%, 160px), 1fr))", gap: "clamp(0.5rem, 2vw, 1rem)" }}>
               {CV_ITEMS.filter(item => item.type === activeType).map((item, i) => (
                 <FadeIn variant="fade-up" key={i} delay={i * 0.08}>
                   <div style={{
@@ -693,7 +709,7 @@ function CV() {
               ))}
             </div>
           ) : activeType === "Skills" ? (
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: "1rem" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(clamp(240px, 100%, 300px), 1fr))", gap: "clamp(0.75rem, 2vw, 1rem)" }}>
               {CV_ITEMS.filter(item => item.type === activeType).map((item, i) => (
                 <FadeIn variant="fade-up" key={i} delay={i * 0.08}>
                   <div style={{
@@ -737,12 +753,12 @@ function CV() {
           ) : (
             CV_ITEMS.filter(item => item.type === activeType).map((item, i) => (
               <FadeIn variant="slide-left" key={i} delay={i * 0.08}>
-                <div style={{
+                <div className="cv-experience-grid" style={{
                   padding: "1rem 0",
                   borderBottom: "1px solid var(--color-border-secondary)",
                   display: "grid",
-                  gridTemplateColumns: "1fr 2fr 1fr",
-                  gap: "1rem",
+                  gridTemplateColumns: "1fr",
+                  gap: "clamp(0.75rem, 2vw, 1.5rem)",
                   alignItems: "start",
                 }}>
                   <div>
@@ -829,6 +845,20 @@ export default function Portfolio() {
 
   return (
     <div style={{ position: "relative", overflow: "hidden" }}>
+      <style dangerouslySetInnerHTML={{
+        __html: `
+          @media (min-width: 768px) {
+            .cv-experience-grid {
+              gridTemplateColumns: 1fr 2fr 1fr !important;
+            }
+          }
+          @media (max-width: 767px) {
+            .cv-experience-grid {
+              gridTemplateColumns: 1fr !important;
+            }
+          }
+        `
+      }} />
       <div ref={scrollRef} style={{ height: "100vh", overflowY: "auto", padding: "0", position: "relative", background: "var(--color-bg-primary)" }}>
         <Nav active={activeSection} onNav={scrollTo} scrollRef={scrollRef} />
         <Hero />
