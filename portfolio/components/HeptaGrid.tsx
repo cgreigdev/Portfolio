@@ -50,13 +50,37 @@ export default function HeptaGrid({
     const adjSquareSize = isMobile ? squareSize * 1.2 : squareSize;
     const totalSize = adjSquareSize + gap;
 
+    // FIX: Use a proper resize function that resets the transform before scaling,
+    // preventing accumulated scale factors on repeated calls.
     const resizeCanvas = () => {
-      canvas.width = canvas.offsetWidth * window.devicePixelRatio;
-      canvas.height = canvas.offsetHeight * window.devicePixelRatio;
-      ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+      const dpr = window.devicePixelRatio || 1;
+      const w = canvas.offsetWidth;
+      const h = canvas.offsetHeight;
+      // Only resize if dimensions actually changed to avoid unnecessary resets
+      if (canvas.width !== Math.round(w * dpr) || canvas.height !== Math.round(h * dpr)) {
+        canvas.width = Math.round(w * dpr);
+        canvas.height = Math.round(h * dpr);
+        ctx.setTransform(1, 0, 0, 1, 0, 0); // reset transform before re-scaling
+        ctx.scale(dpr, dpr);
+      }
     };
+
+    // FIX: Use ResizeObserver on the canvas itself instead of window resize.
+    // This fires when the canvas element's size changes (e.g. during page layout),
+    // catching the case where the hero section finishes painting after initial mount.
+    const resizeObserver = new ResizeObserver(() => {
+      resizeCanvas();
+    });
+    resizeObserver.observe(canvas);
+
+    // FIX: Also defer the initial sizing to after the first paint,
+    // so offsetWidth/offsetHeight reflect the fully laid-out dimensions.
+    requestAnimationFrame(() => {
+      resizeCanvas();
+    });
+
+    // Keep the window resize listener as a fallback
     window.addEventListener("resize", resizeCanvas);
-    resizeCanvas();
 
     const drawRoundedRect = (x: number, y: number, size: number, radius: number) => {
       if (radius > size / 2) radius = size / 2;
@@ -132,6 +156,7 @@ export default function HeptaGrid({
 
     return () => {
       window.removeEventListener("resize", resizeCanvas);
+      resizeObserver.disconnect();
       if (requestRef.current) cancelAnimationFrame(requestRef.current);
       canvas.removeEventListener("mousemove", handleMouseMove);
       canvas.removeEventListener("mouseleave", handleMouseLeave);

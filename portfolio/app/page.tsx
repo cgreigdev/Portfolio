@@ -371,11 +371,11 @@ function Hero() {
             }
           }
         `
-      }} />
+      }} />S
       <section id="home" style={{
-        minHeight: "300vh-64px",
+        minHeight: "100vh-64px",
         display: "flex", flexDirection: "column", justifyContent: "center",
-        padding: "clamp(1rem, 5vw, 2rem) 1rem",
+        padding: "clamp(1rem, 5vw, 3rem) 1rem",
         position: "relative",
         overflow: "hidden",
       }}>
@@ -409,7 +409,7 @@ function Hero() {
         <div style={{ 
           maxWidth: "1200px", 
           margin: "0 auto",
-          padding: "clamp(3rem, 10vw, 6rem)",
+          padding: "clamp(1rem, 4vw, 3rem)",
           position: "relative",
           width: "100%",
           pointerEvents: "none",
