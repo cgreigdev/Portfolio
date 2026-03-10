@@ -373,7 +373,7 @@ function Hero() {
         `
       }} />
       <section id="home" style={{
-        minHeight: "calc(100vh - 64px)",
+        minHeight: "300vh-64px",
         display: "flex", flexDirection: "column", justifyContent: "center",
         padding: "clamp(1rem, 5vw, 2rem) 1rem",
         position: "relative",
@@ -496,15 +496,15 @@ function Hero() {
             fontFamily: "var(--font-family-body)",
             fontSize: "clamp(0.9rem, 2.5vw, 1rem)",
             color: "var(--color-text-muted)",
-            padding: "2rem",
+            padding: "0.2rem",
             maxWidth: "1200px",
             lineHeight: 1.75,
-            marginBottom: "2rem",
+            marginBottom: "1rem",
             textAlign: "center",
             marginLeft: "auto",
             marginRight: "auto",
           }}>
-            Feel free to get in touch with me at{" "}
+            Feel free to get in touch with me {" "}
             <a
               href="mailto:callumgreig20@gmail.com"
               style={{
@@ -523,7 +523,7 @@ function Hero() {
                 (e.target as HTMLAnchorElement).style.textDecoration = "none";
               }}
             >
-              callumgreig20@gmail.com
+              here.
             </a>
           </p>
         </div>
