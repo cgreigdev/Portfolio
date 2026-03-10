@@ -4,6 +4,8 @@ import GooeyNav from "@/components/GooeyNav";
 import GradualBlur from "@/components/GradualBlur";
 import DecryptedText from "@/components/DecryptedText";
 import HeptaGrid from "@/components/HeptaGrid";
+import Contact from "@/components/Contact";
+import FadeIn from "@/components/FadeIn";
 // ============================================================
 //  EDIT ALL YOUR CONTENT HERE
 // ============================================================
@@ -26,12 +28,10 @@ const CONTENT = {
     copyright: "© 2026 Callum Greig | All rights reserved.",
     socialLinks: [
       { label: "LinkedIn", url: "https://linkedin.com/in/callumgreig" },
-      { label: "Email", url: "mailto:callumgreig20@gmail.com" },
     ],
   },
   social: {
     linkedin: "https://linkedin.com/in/callumgreig",
-    email: "callumgreig20@gmail.com",
   },
   cvUrl: "/CV - Callum Greig.pdf", // drop your CV in the /public folder and link it here
 };
@@ -40,6 +40,7 @@ const items = [
   { label: "Home", href: "#home" },
   { label: "Projects", href: "#projects" },
   { label: "About", href: "#cv" },
+  { label: "Contact", href: "#contact" },
 ];
 
 const PROJECTS = [
@@ -229,59 +230,6 @@ const CV_ITEMS = [
   },
 ];
 
-function useInView(threshold = 0.15): [React.RefObject<HTMLDivElement | null>, boolean] {
-  const ref = useRef<HTMLDivElement | null>(null);
-  const [inView, setInView] = useState(false);
-  useEffect(() => {
-    const obs = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setInView(true); },
-      { threshold }
-    );
-    if (ref.current) obs.observe(ref.current);
-    return () => obs.disconnect();
-  }, []);
-  return [ref, inView];
-}
-
-function FadeIn({ 
-  children, 
-  delay = 0.1, 
-  className = "", 
-  variant = "fade-up" 
-}: { 
-  children: React.ReactNode; 
-  delay?: number; 
-  className?: string;
-  variant?: "fade-up" | "slide-left" | "fade"
-}) {
-  const [ref, inView] = useInView();
-
-  const animations = {
-    "fade-up": {
-      opacity: inView ? 1 : 0,
-      transform: inView ? "translateY(0)" : "translateY(28px)",
-      filter: inView ? "blur(0px)" : "blur(4px)",
-      transition: `opacity 0.5s ease ${delay}s, transform 0.5s ease ${delay}s, filter 0.5s ease ${delay}s`,
-    },
-    "slide-left": {
-      opacity: inView ? 1 : 0,
-      transform: inView ? "translateX(0)" : "translateX(-40px)",
-      filter: inView ? "blur(0px)" : "blur(3px)",
-      transition: `opacity 0.5s ease ${delay}s, transform 0.5s ease ${delay}s, filter 0.5s ease ${delay}s`,
-    },
-    "fade": {
-      opacity: inView ? 1 : 0,
-      transition: `opacity 0.5s ease ${delay}s`,
-    },
-  };
-
-  return (
-    <div ref={ref} className={className} style={animations[variant]}>
-      {children}
-    </div>
-  );
-}
-
 function Nav({ active, onNav, scrollRef }: { active: string; onNav: (section: string) => void; scrollRef: React.RefObject<HTMLDivElement | null> }) {
   const [scrolled, setScrolled] = useState(false);
   const initialIndex = items.findIndex(item => item.href === `#${active}`);
@@ -371,7 +319,7 @@ function Hero() {
             }
           }
         `
-      }} />S
+      }} />
       <section id="home" style={{
         minHeight: "100vh-64px",
         display: "flex", flexDirection: "column", justifyContent: "center",
@@ -490,41 +438,6 @@ function Hero() {
             {CONTENT.tagline.map((line, i) => (
               <span key={i}>{line}</span>
             ))}
-          </p>
-
-          <p style={{
-            fontFamily: "var(--font-family-body)",
-            fontSize: "clamp(0.9rem, 2.5vw, 1rem)",
-            color: "var(--color-text-muted)",
-            padding: "0.2rem",
-            maxWidth: "1200px",
-            lineHeight: 1.75,
-            marginBottom: "1rem",
-            textAlign: "center",
-            marginLeft: "auto",
-            marginRight: "auto",
-          }}>
-            Feel free to get in touch with me {" "}
-            <a
-              href="mailto:callumgreig20@gmail.com"
-              style={{
-                color: "var(--color-accent-primary)",
-                textDecoration: "none",
-                transition: "color 0.2s ease, text-decoration 0.2s ease",
-                cursor: "pointer",
-                pointerEvents: "auto",
-              }}
-              onMouseEnter={(e) => {
-                (e.target as HTMLAnchorElement).style.color = "var(--color-accent-secondary)";
-                (e.target as HTMLAnchorElement).style.textDecoration = "underline";
-              }}
-              onMouseLeave={(e) => {
-                (e.target as HTMLAnchorElement).style.color = "var(--color-accent-primary)";
-                (e.target as HTMLAnchorElement).style.textDecoration = "none";
-              }}
-            >
-              here.
-            </a>
           </p>
         </div>
       </section>
@@ -776,7 +689,6 @@ function CV() {
     </section>
   );
 }
-
 function Footer() {
   return (
     <footer style={{
@@ -831,7 +743,7 @@ export default function Portfolio() {
     const obs = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) setActiveSection(e.target.id); });
     }, { threshold: 0.4 });
-    ["home", "projects", "cv"].forEach(id => {
+    ["home", "projects", "cv", "contact"].forEach(id => {
       const el = document.getElementById(id);
       if (el) obs.observe(el);
     });
@@ -849,12 +761,7 @@ export default function Portfolio() {
         __html: `
           @media (min-width: 768px) {
             .cv-experience-grid {
-              gridTemplateColumns: 1fr 2fr 1fr !important;
-            }
-          }
-          @media (max-width: 767px) {
-            .cv-experience-grid {
-              gridTemplateColumns: 1fr !important;
+              grid-template-columns: 1fr 2fr 1fr !important;
             }
           }
         `
@@ -864,6 +771,7 @@ export default function Portfolio() {
         <Hero />
         <Projects />
         <CV />
+        <Contact />
         <Footer />
         <div style={{ height: "10rem" }} />
       </div>
