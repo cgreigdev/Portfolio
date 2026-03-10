@@ -125,7 +125,7 @@ export default function Contact() {
               marginBottom: "clamp(1rem, 2vw, 2rem)",
             }}
           >
-            Feel free to reach out — I’m always open to new opportunities, collaborations, and interesting problems.
+            Feel free to reach out. I’m always open to new opportunities, collaborations, and interesting problems.
           </p>
         </FadeIn>
 

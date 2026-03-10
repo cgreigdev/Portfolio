@@ -13,10 +13,9 @@ import { FaLinkedin } from "react-icons/fa";
 const CONTENT = {
   name: "Callum Greig",
   role: "Mechatronics Engineer",
-  tagline: ["Hi, I'm Callum. I enjoy designing innovative engineering solutions that turn complex problems into practical systems — spanning embedded systems, manufacturing, automation, and custom-built hardware and software.",
+  tagline: ["Hi, I'm Callum. I enjoy designing innovative engineering solutions that turn complex problems into practical systems, spanning embedded systems, manufacturing, and automation.",
     " I'm driven by curiosity and a love of tinkering, with a focus on solutions that combine good engineering, thoughtful design, and long-term sustainability.",
   ],
-  contactme: "Feel free to get in touch with me at callumgreig20@gmail.com",
   sections: {
     projects: {
       title: "Projects",
@@ -48,7 +47,7 @@ const PROJECTS = [
   {
     id: 1,
     title: "Full Year Project – Non Destructive Testing of Composite Structures",
-    tags: ["Phased-Aray Ultrasonic NDT", "Composite Material Analysis", "Airframe Structural Testing", "Data Analysis"],
+    tags: ["Phased-Array Ultrasonic NDT", "Composite Material Analysis", "Airframe Structural Testing", "Data Analysis"],
     year: "2023",
     desc: "NDT analysis of MKII-A Composite Airframe, evaluate validity of NDT methods for detecting CFRP long-term performance, airframe load testing, and evaluate real-time diagnosis methods of airframe structural health.",
     status: "Complete",
@@ -71,7 +70,7 @@ const PROJECTS = [
   },
   {
     id: 4,
-    title: "Auto Tool Changing CNC Macine",
+    title: "Auto Tool Changing CNC Machine",
     tags: ["Embedded Systems", "PCB Design", "G-Code", "DFMA"],
     year: "2024-2026",
     desc: "Designed and implemented a CNC control architecture integrating motion drives, power systems, sensors, machine I/O, tooling automation, integrated safety systems, and operational manuals/SOP. Increased manufacturing efficiency by 200% and reduced manual intervention by 80%.",
@@ -82,7 +81,7 @@ const PROJECTS = [
     title: "Manufacturing Data & Product Database System",
     tags: ["Database Design", "Process Optimisation", "Data Analysis", "Automation"],
     year: "2025-2026",
-    desc: "Developed an database for pultruded products integrating production setup sheets, troubleshooting records, and engineering data. Implemented tools for issue tracking, resin recipe management, and pricing calculators. Improving process optimisation and project costing.",
+    desc: "Developed a database for pultruded products integrating production setup sheets, troubleshooting records, and engineering data. Implemented tools for issue tracking, resin recipe management, and pricing calculators. Improving process optimisation and project costing.",
     status: "Ongoing",
   },
 
@@ -154,7 +153,7 @@ const CV_ITEMS = [
     title: "Workshop Engineer Trainee",
     org: "Reed Industrial LTD",
     period: "Nov 2021 – Feb 2022",
-    detail: "Practical manufacturing experience in CNC machining, G-code programming, general machining, strengthening design-for-manufacture understanding.",
+    detail: "Practical manufacturing experience in CNC machining, G-code programming, general machining, strengthening DFM understanding.",
   },
   {
   type: "Experience",
