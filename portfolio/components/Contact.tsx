@@ -56,11 +56,11 @@ export default function Contact() {
 
   const inputStyle = (field: string): React.CSSProperties => ({
     width: "100%",
-    background: focusedField === field ? "rgba(199, 91, 42, 0.04)" : "transparent",
+    background: focusedField === field ? "transparent" : "transparent",
     border: "none",
     borderBottom: `1px solid ${focusedField === field ? "var(--color-accent-primary)" : "var(--color-border-secondary)"}`,
-    borderRadius: "0",
-    padding: "0.75rem 0",
+    borderRadius: "10px",
+    padding: "0.25rem 0.5rem",
     fontFamily: "var(--font-family-body)",
     fontSize: "clamp(0.85rem, 2vw, 0.95rem)",
     color: "var(--color-text-primary)",
@@ -76,12 +76,16 @@ export default function Contact() {
     textTransform: "uppercase",
     color: "var(--color-accent-primary)",
     marginBottom: "0.4rem",
+    padding: "0.25rem 0.5rem",
     display: "block",
   };
 
   const fieldWrapper: React.CSSProperties = {
     display: "flex",
     flexDirection: "column",
+    background: "var(--color-bg-secondary)",
+    border: "1px solid var(--color-accent-primary)",
+    borderRadius: "10px",
   };
 
   return (
@@ -93,7 +97,7 @@ export default function Contact() {
         scrollMarginTop: "64px",
       }}
     >
-      <div style={{ maxWidth: "720px", margin: "0 auto" }}>
+      <div style={{ maxWidth: "min(700px, 90vw)", margin: "0 auto"}}>
         <FadeIn variant="slide-left">
           <h2
             style={{
@@ -121,7 +125,7 @@ export default function Contact() {
               marginBottom: "clamp(1rem, 2vw, 2rem)",
             }}
           >
-            Open to new opportunities, collaborations, and interesting problems.
+            Feel free to reach out — I’m always open to new opportunities, collaborations, and interesting problems.
           </p>
         </FadeIn>
 

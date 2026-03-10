@@ -6,6 +6,7 @@ import DecryptedText from "@/components/DecryptedText";
 import HeptaGrid from "@/components/HeptaGrid";
 import Contact from "@/components/Contact";
 import FadeIn from "@/components/FadeIn";
+import { FaLinkedin } from "react-icons/fa";
 // ============================================================
 //  EDIT ALL YOUR CONTENT HERE
 // ============================================================
@@ -25,7 +26,7 @@ const CONTENT = {
     },
   },
   footer: {
-    copyright: "© 2026 Callum Greig | All rights reserved.",
+    copyright: "© March 2026 - Callum Greig",
     socialLinks: [
       { label: "LinkedIn", url: "https://linkedin.com/in/callumgreig" },
     ],
@@ -293,22 +294,6 @@ function Hero() {
     return () => clearInterval(t);
   }, []);
 
-  useEffect(() => {
-    const updateProfilePhotoPosition = () => {
-      const profilePhoto = document.querySelector('.hero-profile-image') as HTMLElement;
-      if (profilePhoto) {
-        const viewportHeight = window.innerHeight;
-        // More lenient on smaller screens: use 40% instead of 50%, max -100px instead of -150px
-        const offset = Math.max(-30, Math.min(-10, -viewportHeight * 0.4));
-        profilePhoto.style.marginTop = `${offset}px`;
-      }
-    };
-
-    updateProfilePhotoPosition();
-    window.addEventListener('resize', updateProfilePhotoPosition);
-    return () => window.removeEventListener('resize', updateProfilePhotoPosition);
-  }, []);
-
   return (
     <>
       <style dangerouslySetInnerHTML={{
@@ -321,9 +306,8 @@ function Hero() {
         `
       }} />
       <section id="home" style={{
-        minHeight: "100vh-64px",
+        minHeight: "calc(100vh - 64px)",
         display: "flex", flexDirection: "column", justifyContent: "center",
-        padding: "clamp(1rem, 5vw, 3rem) 1rem",
         position: "relative",
         overflow: "hidden",
       }}>
@@ -355,9 +339,10 @@ function Hero() {
         }} />
 
         <div style={{ 
-          maxWidth: "1200px", 
+          maxWidth: "min(1400px, 90vw)", 
           margin: "0 auto",
-          padding: "clamp(1rem, 4vw, 3rem)",
+          padding: "clamp(2rem, 6vw, 5rem)",
+          paddingTop: "calc(clamp(2rem, 6vw, 5rem) + 64px)",
           position: "relative",
           width: "100%",
           pointerEvents: "none",
@@ -377,7 +362,7 @@ function Hero() {
               overflow: "hidden",
               border: "3px solid var(--color-accent-primary)",
               boxShadow: "0 0 40px #6b7d5f77",
-              marginBottom: "0rem",
+              marginBottom: "1rem",
               display: "none", // Hidden by default
             }}>
               <img
@@ -428,7 +413,7 @@ function Hero() {
             fontFamily: "var(--font-family-body)",
             fontSize: "clamp(0.9rem, 2.5vw, 1.05rem)",
             color: "var(--color-text-muted)",
-            maxWidth: "1200px",
+            maxWidth: "80ch",
             lineHeight: 1.75,
             marginBottom: "2rem",
             textAlign: "center",
@@ -454,7 +439,7 @@ function Projects() {
 
   return (
     <section id="projects" style={{ padding: "clamp(1.5rem, 5vw, 3rem) clamp(1rem, 5vw, 2rem)", background: "var(--color-bg-primary)", borderTop: "1px solid var(--color-border-secondary)", borderBottom: "1px solid var(--color-border-secondary)", scrollMarginTop: "64px" }}>
-      <div style={{ maxWidth: "1600px", margin: "0 auto", padding: "0 clamp(0.5rem, 3vw, 1.5rem)" }}>
+      <div style={{ maxWidth: "min(1600px, 90vw)", margin: "0 auto", padding: "0 clamp(0.5rem, 3vw, 1.5rem)", minHeight: "calc(100vh - 64px)" }}>
         <FadeIn variant="slide-left">
           <h2 style={{ fontFamily: "var(--font-inter)", fontSize: "var(--font-size-section-heading)", fontWeight: 600, color: "var(--color-text-primary)", margin: "0 0 3.5rem 0", letterSpacing: "-0.03em", textAlign: "center" }}>
             {CONTENT.sections.projects.title}
@@ -560,7 +545,7 @@ function CV() {
 
   return (
     <section id="cv" style={{ padding: "clamp(1.5rem, 5vw, 3rem) clamp(1rem, 5vw, 2rem)", scrollMarginTop: "80px" }}>
-      <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 clamp(0.5rem, 3vw, 1.5rem)" }}>
+      <div style={{ maxWidth: "min(1400px, 90vw)", margin: "0 auto", padding: "0 clamp(0.5rem, 3vw, 1.5rem)", minHeight: "calc(100vh - 64px)" }}>
         <FadeIn variant="slide-left"> 
           <h2 style={{ fontFamily: "var(--font-inter)", fontSize: "clamp(2rem, 5vw, 3.5rem)", fontWeight: 600, color: "var(--color-text-primary)", margin: "0 0 3rem 0", letterSpacing: "-0.03em", textAlign: "center" }}>
             {CONTENT.sections.cv.title}
@@ -589,9 +574,9 @@ function CV() {
           ))}
         </div>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: "0", minHeight: "200px" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "0", minHeight: "200px" ,}}>
           {activeType === "Hobbies" ? (
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(clamp(120px, 100%, 160px), 1fr))", gap: "clamp(0.5rem, 2vw, 1rem)" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(clamp(120px, 100%, 200px), 1fr))", gap: "clamp(0.5rem, 2vw, 1rem)" }}>
               {CV_ITEMS.filter(item => item.type === activeType).map((item, i) => (
                 <FadeIn variant="fade-up" key={i} delay={i * 0.08}>
                   <div style={{
@@ -622,7 +607,7 @@ function CV() {
               ))}
             </div>
           ) : activeType === "Skills" ? (
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(clamp(240px, 100%, 300px), 1fr))", gap: "clamp(0.75rem, 2vw, 1rem)" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(clamp(240px, 100%, 300px), 1fr))", gap: "clamp(0.75rem, 2vw, 1rem)"}}>
               {CV_ITEMS.filter(item => item.type === activeType).map((item, i) => (
                 <FadeIn variant="fade-up" key={i} delay={i * 0.08}>
                   <div style={{
@@ -695,9 +680,9 @@ function Footer() {
       padding: "1rem clamp(1rem, 5vw, 5rem)",
       borderTop: "1px solid var(--color-border-primary)",
       display: "flex",
-      justifyContent: "space-between",
+      flexDirection: "column",
+      justifyContent: "center",
       alignItems: "center",
-      flexWrap: "wrap",
       gap: "1rem",
     }}>
       <span style={{ fontFamily: "'Roboto Mono', monospace", fontSize: "clamp(0.6rem, 1.5vw, 0.7rem)", letterSpacing: "0.15em", color: "var(--color-text-tiny)" }}>
@@ -705,18 +690,19 @@ function Footer() {
       </span>
       <div style={{ display: "flex", gap: "clamp(1rem, 3vw, 2rem)", flexWrap: "wrap" }}>
         {CONTENT.footer.socialLinks.map(link => (
-          <a key={link.label} href={link.url} style={{
-            fontFamily: "'Roboto Mono', monospace",
-            fontSize: "clamp(0.6rem, 1.5vw, 0.7rem)",
-            letterSpacing: "0.12em",
-            color: "var(--color-text-extra-faint)",
-            textDecoration: "none",
-            textTransform: "uppercase",
-            transition: "color 0.2s",
-          }}
-            onMouseEnter={e => (e.target as HTMLAnchorElement).style.color = "var(--color-accent-primary)"}
-            onMouseLeave={e => (e.target as HTMLAnchorElement).style.color = "var(--color-text-extra-faint)"}
-          >{link.label}</a>
+          <a key={link.label} href={link.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              color: "var(--color-text-extra-faint)",
+              transition: "color 0.2s",
+              display: "flex",
+            }}
+            onMouseEnter={e => (e.currentTarget as HTMLAnchorElement).style.color = "var(--color-accent-primary)"}
+            onMouseLeave={e => (e.currentTarget as HTMLAnchorElement).style.color = "var(--color-text-extra-faint)"}
+          >
+            <FaLinkedin size={20} />
+          </a>
         ))}
       </div>
     </footer>
