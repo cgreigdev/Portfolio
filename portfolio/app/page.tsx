@@ -13,8 +13,8 @@ import { FaLinkedin } from "react-icons/fa";
 const CONTENT = {
   name: "Callum Greig",
   role: "Mechatronics Engineer",
-  tagline: ["Hi, I'm Callum. I enjoy designing innovative engineering solutions that turn complex problems into practical systems, spanning embedded systems, manufacturing, and automation.",
-    " I'm driven by curiosity and a love of tinkering, with a focus on solutions that combine good engineering, thoughtful design, and long-term sustainability.",
+  tagline: ["Hi, I'm Callum. I enjoy designing innovative engineering systems that turn complex problems into practical solutions, spanning embedded electronics, automation, and complex material analysis.",
+    " I'm driven by curiosity and a love of tinkering, with a focus on sustainable engineering design and a balance of form and function.",
   ],
   sections: {
     projects: {
@@ -49,7 +49,7 @@ const PROJECTS = [
     title: "Full Year Project – Non Destructive Testing of Composite Structures",
     tags: ["Phased-Array Ultrasonic NDT", "Composite Material Analysis", "Airframe Structural Testing", "Data Analysis"],
     year: "2023",
-    desc: "NDT analysis of MKII-A Composite Airframe, evaluate validity of NDT methods for detecting CFRP long-term performance, airframe load testing, and evaluate real-time diagnosis methods of airframe structural health.",
+    desc: "NDT analysis of composite airframe to verify airframe structural integrity. Analysis of defect propogation in carbon fibre reinforced polymer (CFRP) components, airframe load testing, and developed diagnosis methods for validating airworthiness.",
     status: "Complete",
   },
   {
@@ -57,7 +57,7 @@ const PROJECTS = [
     title: "Flexural Material Testing Machine",
     tags: ["Embedded Systems", "Python", "Data Analysis", "Composite Material Testing"],
     year: "2023-2024",
-    desc: "Designed a semi-automated three-point flexural testing machine with embedded control, load cell and displacement instrumentation, signal conditioning, and stress–strain analysis for composites to ASTM D790. Enabled precise material characterisation with 0.5% accuracy, reducing testing time by 60% and increasing data reliability.",
+    desc: "Designed a semi-automated three-point flexural testing machine with embedded control, load cell and displacement instrumentation, and signal conditioning. Programmed stress–strain analysis for composites, conforming to ASTM D790 standards. Reduced testing time and increased data reliability.",
     status: "Complete",
   },
   {
@@ -65,7 +65,7 @@ const PROJECTS = [
     title: "Hazardous Chemical Storage Temperature Monitoring System",
     tags: ["Embedded Electronics", "Time-series Data Systems", "Networking and IoT", "Systems Engineering"],
     year: "2024-2025",
-    desc: "Designed and deployed an ESP32-based temperature monitoring system for hazardous chemical storage, integrating IoT telemetry with time-series data logging. The solution provides continuous 24/7 monitoring for notification of temperature deviations/warnings.",
+    desc: "Designed and deployed an ESP32 based temperature monitoring system for hazardous chemical storage, integrating IoT telemetry with time-series data logging. The solution provides continuous 24/7 monitoring for notification of temperature deviations/warnings.",
     status: "Complete",
   },
   {
@@ -93,7 +93,7 @@ const PROJECTS = [
 const PERSONAL_PROJECTS = [
   {
     id: 1,
-    title: "3D Printed TPU Discs – Aerodynamic Design Iteration",
+    title: "Aerodynamic Analysis of 3D Printed TPU Discs for Disc Golf",
     tags: ["3D Printing", "Aerodynamics", "Iterative Design", "CAD Modelling"],
     year: "2023",
     desc: "Designed and 3D-printed flexible TPU discs, using iterative CAD modelling and aerodynamic analysis to optimise flight performance. Prototypes tested and refined to improve flight characteristics.",
@@ -109,7 +109,7 @@ const PERSONAL_PROJECTS = [
   }, 
   {
     id: 3,
-    title: "Homelab Infrastructure & Systems Experimentation",
+    title: "Homelab Infrastructure & Experimentation",
     tags: ["Virtualisation", "Networking", "Automation", "Infrastructure Management"],
     year: "2024–2026",
     desc: "Built and maintained a personal homelab for systems learning and infrastructure experimentation, using virtualisation, containerised services, and networked applications to explore server management and deployment workflows.",
@@ -120,7 +120,7 @@ const PERSONAL_PROJECTS = [
     title: "Multi-Protocol Embedded Universal Control Device",
     tags: ["Embedded Systems", "Wireless Communication", "Sensor Integration", "C/C++"],
     year: "2025-2026",
-    desc: "Developed a handheld embedded device platform supporting infrared, RF, NFC, Bluetooth, and WiFi experimentation. Explored low-power firmware design, signal acquisition workflows, and integration of time-of-flight and motion sensors for measurement and interaction research.",
+    desc: "Developed a handheld embedded device platform supporting infrared, RF, NFC, Bluetooth, and WiFi experimentation. Explored low-power firmware design, signal noise reduction, and integration of time-of-flight and motion sensors for measurement.",
     status: "Ongoing",
   },
   {
@@ -128,7 +128,7 @@ const PERSONAL_PROJECTS = [
     title: "Creative Worldbuilding and Knowledge Database Design",
     tags: ["Systems Design", "Worldbuilding", "Map Design", "Creative Engineering"],
     year: "2026",
-    desc: "Developed a creative design environment for tabletop campaign development using an Obsidian-based knowledge database. The system supports structured worldbuilding, map design, and organised campaign planning with hierarchical story and character relationships.",
+    desc: "Developed a creative design environment for tabletop campaign development using an Obsidian-based knowledge database. Supporting structured worldbuilding, map design, and organised campaign planning.",
     status: "Ongoing",
   },
 
@@ -146,7 +146,7 @@ const CV_ITEMS = [
     title: "Mechatronics Design Engineer",
     org: "Gracol Composites LTD",
     period: "Nov 2023 – present",
-    detail: "Collaborated on composite structural system design, applying mechanical analysis, material characterisation, and standardised testing. Designed parametric 3D-printed forming tools to improve pultrusion efficiency. Developed embedded monitoring systems for load, VOC, thermal, and NDT analysis, plus automated dangerous goods temperature alerting. Built internal engineering tools including quoting calculators, structural analysis tools, and production databases to improve workflow and traceability.",
+    detail: "Design and analysis of composite structural systems using mechanical analysis, material characterisation, and standardised testing. Designed parametric surface-modelled forming tools to optomise production uptime. Developed embedded monitoring systems for load, VOC, thermal, and product quality analysis, plus automated dangerous goods temperature alerting. Built internal engineering tools including quoting calculators, structural analysis tools, and production databases to improve workflow and traceability.",
   },
   {
     type: "Experience",
@@ -167,7 +167,7 @@ const CV_ITEMS = [
     title: "CAD and Analysis",
     org: "",
     period: "",
-    detail: "Parametric CAD · Surface Modelling · SolidWorks · PCB Design · Fusion 360 · FEA · CFD · Thermal Analysis",
+    detail: "Parametric CAD · Surface Modelling · SolidWorks · Fusion 360 · FEA · CFD",
   },
   {
     type: "Skills",
@@ -181,7 +181,7 @@ const CV_ITEMS = [
     title: "Embedded & Control Systems",
     org: "",
     period: "",
-    detail: "PLC Ladder Logic · G-Code · Microcontrollers",
+    detail: "PLC Ladder Logic · G-Code · Microcontrollers · Altium · KiCad · Fusion 360 PCB Design",
   },
   {
     type: "Skills",

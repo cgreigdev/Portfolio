@@ -58,7 +58,7 @@ export default function Contact() {
     width: "100%",
     background: focusedField === field ? "transparent" : "transparent",
     border: "none",
-    borderBottom: `1px solid ${focusedField === field ? "var(--color-accent-primary)" : "var(--color-border-secondary)"}`,
+    borderBottom: `1px solid ${focusedField === field ? "transparent" : "transparent"}`,
     borderRadius: "10px",
     padding: "0.25rem 0.5rem",
     fontFamily: "var(--font-family-body)",
@@ -230,7 +230,7 @@ export default function Contact() {
                   margin: 0,
                 }}
               >
-                // message sent — i'll be in touch.
+                Message sent! I'll be in touch.
               </p>
             )}
 
