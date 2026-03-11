@@ -144,7 +144,7 @@ const CV_ITEMS = [
   {
     type: "Experience",
     title: "Mechatronics Design Engineer",
-    org: "Gracol Composites LTD",
+    org: "Gracol Composites",
     period: "Nov 2023 – present",
     detail: "Design and analysis of composite structural systems using mechanical analysis, material characterisation, and standardised testing. Designed parametric surface-modelled forming tools to optomise production uptime. Developed embedded monitoring systems for load, VOC, thermal, and product quality analysis, plus automated dangerous goods temperature alerting. Built internal engineering tools including quoting calculators, structural analysis tools, and production databases to improve workflow and traceability.",
   },
