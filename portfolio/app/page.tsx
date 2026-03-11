@@ -151,7 +151,7 @@ const CV_ITEMS = [
   {
     type: "Experience",
     title: "Workshop Engineer Trainee",
-    org: "Reed Industrial LTD",
+    org: "Read Industrial LTD",
     period: "Nov 2021 – Feb 2022",
     detail: "Practical manufacturing experience in CNC machining, G-code programming, general machining, strengthening DFM understanding.",
   },
